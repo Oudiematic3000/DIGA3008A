@@ -5,17 +5,20 @@
     <meta name="author" content="Ariel Oudmayer">
     <meta name="description" content="The homepage of the portfolio website for Ari Oudmayer- Game Design Student, Programmer, Musician and creative.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" href="styles/style.css">
     <title>Ariel Oudmayer - Home</title>
   
   </head>
 
   <body>
-    <header>
-      <h1 class="h-card p-name">Ariel Oudmayer</h1>
-      <h2>3rd Year Digital Arts student, Bassist, Chronic Silly Billy</h2>
-      <h3>Supportive. Versatile. Adaptable. Reliable.</h3>
+    <header class="landing">
+      <h1 class="h-card p-name">Ariel Oudmayer.</h1>
+      <h2 class="subtitle">Supportive. Versatile. Adaptable. Reliable.</h2>
+      <h3 id="landingDescription">3rd Year Digital Arts student, Bassist, Chronic Silly Billy.</h3>
+      
     </header>
-    <nav>
+    <nav class="navbar fade-in">
       <ul>
         <li>Home</li>
         <li><a href="blog/index.html">Blog</a></li>
@@ -27,23 +30,25 @@
     </nav>
 
     <main>
-      <article>
-        <hgroup class="h-card">
-        <h2>About Me.</h2>
+      <article id="AboutMe">
         <img class="u-photo" src="images/MeAndBianca.jpg" height="550" alt="Picture of Ari Oudmayer and his girlfriend">
-        </hgroup>
-        <p>
+        <hgroup class="h-card" id="AboutMeText">
+        <h2 class="heading">About Me.</h2>
+        
+        
+        <p class="bodyText">
           Hi there! I'm Ari. I'm a student at the University of Witwatersrand in South Africa. I make games and music. I also make spoofs of
           albums I like by photoshopping myself onto the covers. Occasionally, I
-          also make jokes. Watch out for those. Promise it'll be worth it. I
+          also make jokes. Watch out for those. Promise it'll be worth it.</p><p class="bodyText"> I
           love to solve problems creatively, be they anywhere on the spectrum
           from unique sorting algorithms to figuring out you can put hot dogs in
-          the air fryer. I work well in teams and have no problem adjusting to
+          the air fryer.</p><p class="bodyText"> I work well in teams and have no problem adjusting to
           any dynamic. I love working with people who have crazy, ambitious
           ideas and I love figuring out how to make ideas work. If you'd like to
           collaborate on anything (and I mean anything), please don't be shy to
           contact me!
         </p>
+      </hgroup>
       </article>
     </main>
     <hr>

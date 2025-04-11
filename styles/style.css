@@ -1,0 +1,112 @@
+body{
+    background-color: black;
+    color: white;
+
+    
+}
+
+@font-face {
+    font-family: 'BigJohn';
+    src: url("../fonts/BIG\ JOHN.otf");
+    
+}
+@font-face {
+    font-family: 'Metropolis';
+    src: url(../fonts/Metropolis-Regular.otf);
+}
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 1.5s ease-in-out 1.5s forwards, slideUp 1s ease-in-out 1.5s;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+  @keyframes slideUp {
+    from{transform: translateY(100%);}
+    to{transform: translateY(0%);}
+  }
+h1{
+    font-family:'BigJohn' ,sans-serif;
+    font-weight: normal;
+    font-size: 5rem;
+    margin-left: 140px;
+}
+.subtitle{
+    font-family: 'Metropolis';
+    font-weight: normal;
+    font-size: 2.1rem;
+    margin-top: -49px;
+    margin-left: 140px;
+}
+#landingDescription{
+    font-family: 'Metropolis';
+    font-weight: normal;
+    font-size: 3.3rem;
+    max-width: 55vw;
+    margin-left: 140px;
+}
+.heading{
+    font-family:'BigJohn' ,sans-serif;
+    font-weight: normal;
+    font-size: 3.3rem;
+    margin:auto;
+}
+.bodyText{
+    font-family: 'Metropolis';
+    font-weight: normal;
+    font-size: 1.5rem;
+    line-height: 2rem;
+}
+.landing{
+    margin-top: 28vh;
+    margin-bottom: 33vh;
+}
+#AboutMe{
+    display: flex;
+
+    img{
+        margin-left: 70px;
+    }
+    #AboutMeText{
+        margin-left: 70px;
+        margin-right: 200px;
+       padding-top: ;
+    }
+}
+.navbar{
+    
+    position:sticky;
+    top: 2vh;
+    margin-inline: 50vh;
+    margin-bottom: 30vh;
+    min-width: 500px;
+    font-family: 'metropolis';
+    background-color: white;
+    padding: 3rem;
+    border-radius: 10px;
+    
+    ul{
+        
+        position: relative;
+        justify-content: center;
+        list-style-type: none;
+        padding: 0px;
+        margin: 0px;
+        width: 100%; 
+        display: flex;
+        li{
+            flex-grow: 1;
+            color: black;
+            font-size: large;
+            text-align: center;
+        }
+    }
+    a{
+        color: black;
+        text-decoration: none;
+        
+        font-size: large;
+    }
+}
