@@ -65,14 +65,94 @@ h1{
 }
 #AboutMe{
     display: flex;
-
+    padding-top: 200px;
     img{
         margin-left: 70px;
     }
     #AboutMeText{
         margin-left: 70px;
         margin-right: 200px;
-       padding-top: ;
+       padding-top: 20px; 
+    }
+}
+#Projects{
+    padding-top: 200px;
+   
+    .heading{
+        margin-left: 70px;
+        margin-bottom: 50px;
+    }
+    ul{
+       padding: 50px;
+        justify-content: center;
+        display: flex;
+        background-color: #141414;
+        margin-inline: 80px;
+        list-style-type: none;
+    }
+    li{
+    text-align: center;
+    font-family: 'Metropolis';
+    font-weight: normal;
+    font-size: 1.5rem;
+    line-height: 2rem;
+    margin-inline: 60px;
+    max-width: min-content;
+    
+    img{
+        width: 300px;
+    }
+    
+    a{
+        
+        text-decoration: none;
+        color: white
+    }
+    }
+
+}
+
+#Blog{
+    
+    padding-top: 200px;
+    .heading{
+        margin-left: 70px;
+        margin-bottom: 50px;
+    }
+    #blogSpace{
+       
+        background-color: #141414;
+        padding: 40px;
+        margin: 90px;
+        font-family: 'Metropolis';
+        font-weight: normal;
+        section{
+            padding: 1  0px;
+        }
+        h3{
+            font-size: 2rem;
+        }
+        img{
+            max-width: 600px;
+        }
+        
+    }
+    a{
+            color: white;
+            text-decoration: none;
+            font-family: 'Metropolis';
+            font-size: large;
+    }
+}
+#Contact{
+    padding-top: 200px;
+    .heading{
+        margin-left: 70px;
+        margin-bottom: 50px;
+    }
+    section{
+        font-family: 'Metropolis';
+        font-weight: normal;
     }
 }
 .navbar{
@@ -83,8 +163,8 @@ h1{
     margin-bottom: 30vh;
     min-width: 500px;
     font-family: 'metropolis';
-    background-color: white;
-    padding: 3rem;
+    background-color: #dbdbdb;
+    padding: 2rem;
     border-radius: 10px;
     
     ul{
@@ -102,11 +182,13 @@ h1{
             font-size: large;
             text-align: center;
         }
+        a{
+            color: black;
+            text-decoration: none;
+            
+            font-size: large;
+        }
     }
-    a{
-        color: black;
-        text-decoration: none;
-        
-        font-size: large;
-    }
+    
+    
 }

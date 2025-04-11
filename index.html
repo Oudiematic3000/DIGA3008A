@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="normalize.css">
     <link rel="stylesheet" href="styles/style.css">
+    <script src="https://kit.fontawesome.com/b4478f8802.js" crossorigin="anonymous"></script>
     <title>Ariel Oudmayer - Home</title>
   
   </head>
@@ -14,17 +15,16 @@
   <body>
     <header class="landing">
       <h1 class="h-card p-name">Ariel Oudmayer.</h1>
-      <h2 class="subtitle">Supportive. Versatile. Adaptable. Reliable.</h2>
+      <h2 class="subtitle">Versatile. Adaptable. Supportive. Reliable.</h2>
       <h3 id="landingDescription">3rd Year Digital Arts student, Bassist, Chronic Silly Billy.</h3>
       
     </header>
     <nav class="navbar fade-in">
       <ul>
-        <li>Home</li>
-        <li><a href="blog/index.html">Blog</a></li>
-        <li><a href="design/index.html">Design</a></li>
-        <li><a href="essays/index.html">Essays</a></li>
-        <li><a href="projects/index.html">Projects</a></li>
+        <li><a href="index.html#">Home</a></li>
+        <li><a href="index.html#AboutMe">About Me</a></li>
+        <li><a href="index.html#Projects">Projects</a></li>
+        <li><a href="index.html#Blog">Blog</a></li> 
         <li><a href="contact/index.html">Contact</a></li>
       </ul>
     </nav>
@@ -50,11 +50,62 @@
         </p>
       </hgroup>
       </article>
+      <article id="Projects">
+        <h2 class="heading">Projects.</h2>
+        <ul>
+          <li><a href="projects/programming/index.html">Programming</a>
+            <a href="projects/programming/index.html"><img src="projects/programming/images/helloWorld.png"></a>
+            </li>
+            <li><a href="projects/music/index.html">Music</a>
+              <a href="projects/music/index.html"><img src="projects/music/images/bassClef.png"></a>
+              </li>
+              <li><a href="projects/design/index.html">Design</a>
+                <a href="projects/design/index.html"><img src="projects/design/images/ratioThumbnail.png"></a>
+                </li>
+                <li><a href="projects/essays/index.html">Essays</a>
+                  <a href="projects/essays/index.html"><img src="projects/essays/images/EssayThumbnail.png"></a>
+                  </li>
+        </ul>
+      </article>
+      <article id="Blog">
+        <h2 class="heading">Blog.</h2>
+        <section id="blogSpace">
+          <h3>Just Put it on My Tab: The State of South African Government Websites.</h3>
+          <p>The state of our official government departmental websites is absolutely disastrous.</p>
+          <h4>The Department of Basic Education</h4>
+          <h5>HomePage</h5>
+          <img src="blog/images/BasicEducationHome.png">
+          <ul>
+            <li>The final entry of the navigation bar is cut off. unclear directions defeat the point of navigation.</li>
+            <li>The entire homepage is cluttered with multiple types of content (Text, images, news links, social media windows, videos).</li>
+            <li>There is a scrolling image display (not shown in screenshot) which has images of different dimensions as slides. Every time the dimensions of the display change, all the text on the website jumps up or down to accommodate the new image size.</li>
+          </ul>
+          <section>
+            <a href="blog/index.html">See more...</a>
+          </section>
+        </section>
+        
+      </article>
+      <article id="Contact">
+        <h2 class="heading">Contact Me.</h2>
+        <section class="h-card">
+          <p class="p-name" id="contactName">Ariel Oudmayer</p>
+          <address>
+            <ul>
+              <li><a  class="u-email" href="mailto:oudmayera@gmail.com">Email - oudmayera@gmail.com</a></li>
+              <li><a class="u-url" href="https://oudiematic3000.itch.io/"><i class="fa-brands fa-github"></i>Itch.io - oudiematic3000.itch.io</a></li>
+              <li><a class="u-url" href="https://github.com/Oudiematic3000">Github - github.com/Oudiematic3000</a></li>
+              <li></li>
+            </ul>
+          </address>
+        </section>
+      </article>
     </main>
     <hr>
 
   </body>
   <footer>
-    Ariel Oudmayer 2025<span style="float: right">Supportive. Versatile. Adaptable. Reliable.</span>
+    <i class="fa-solid fa-house"></i>
+    Ariel Oudmayer 2025<span style="float: right">Versatile. Adaptable. Supportive. Reliable.</span>
  </footer>
 </html>
