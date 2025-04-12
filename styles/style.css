@@ -91,7 +91,7 @@ h1{
 }
 #Projects{
     padding-top: 200px;
-   
+ 
     .heading{
         margin-left: 70px;
         margin-bottom: 50px;
@@ -103,6 +103,7 @@ h1{
         background-color: #141414;
         margin-inline: 80px;
         list-style-type: none;
+      
     }
     li{
     text-align: center;
@@ -115,26 +116,44 @@ h1{
     
     img{
         width: 300px;
+        transition: all 0.15s;
     }
     
     a{
         
         text-decoration: none;
-        color: white
+        color: white;
+      
     }
    
     
     }
-    li:hover a{
-            
-        color: #636364;
+    li:hover{
+           
+            img{
+                box-shadow: 0 0 14px 2px #dbdbdb;
+            }
         
     }
+    
 
 }
 
 #Blog{
-    
+    #BlogHeadingContainer{
+        display: flex;
+        justify-content: space-between;
+        #AllBlogs{
+            a{
+                font-family:'BigJohn' ,sans-serif;
+                font-weight: normal;
+                font-size: 3.3rem;
+            }
+        margin-right: 70px;
+        margin-bottom: 50px;
+        
+        }
+    }
     padding-top: 200px;
     .heading{
         margin-left: 70px;
@@ -159,14 +178,15 @@ h1{
         
     }
     a{
-            color: white;
+            color: #636364;
             text-decoration: none;
             font-family: 'Metropolis';
             font-size: large;
+            transition: color 0.15s;
     }
     a:hover{
             
-        color: #636364;
+        color: white;
         
     }
     
@@ -194,6 +214,7 @@ h1{
                 line-height:40px;
                 text-decoration: none;
                 color: white;
+                transition: color 0.15s;
             }
             a:hover{
             
@@ -239,7 +260,7 @@ h1{
             
             color: black;
             text-decoration: none;
-            
+            transition: color 0.15s;
             font-size: large;
         }
         a:hover{
@@ -283,8 +304,8 @@ h1{
             
             color: black;
             text-decoration: none;
-            
             font-size: large;
+            transition: color 0.15s;
         }
         a:hover{
             
@@ -323,8 +344,10 @@ h1{
       padding: 20px;
       display: flex;
       justify-content: center;
+      transition: box-shadow .3s;
+      border-radius: 8px;
       img{
-       
+        
         width: 400px;
         height: 200px;
     }
@@ -336,6 +359,60 @@ h1{
         }
         .cardContent{
             margin-inline: 20px;
+        }
+       
+    }
+    .card:hover{
+        box-shadow: 0 0 14px 2px #dbdbdb;
+    }
+}
+.blogEntry{
+   
+    font-family: 'Metropolis';
+    margin-left: 20px;
+    cite{
+        color: #dbdbdb;
+    }
+    .e-content{
+       p{
+        line-height: 1.3rem;
+        margin-right: 100px;
+       }
+       figcaption{
+        line-height: 1.3rem;
+        margin-right: 100px;
+       }
+       a{
+        text-decoration: none;
+        color: #636364;
+        transition: color 0.15s;
+       }
+       a:hover{
+        color: white;
+       }
+    }
+    h2{
+        padding-top: 100px;
+        font-weight: normal;
+        font-size: 3rem;
+        margin-bottom: 0px;
+    }
+    h3{
+        font-weight: normal;
+        font-size: 2rem;
+    }
+    .blogSubtitle{
+        display: flex;
+        justify-content: space-between;
+        color: #636364;
+        margin-bottom: 3rem;
+        a{
+            text-decoration: none;
+            color: #dbdbdb;
+            transition: color 0.15s;
+        }
+        a:hover{
+            color: #636364;
         }
         
     }
