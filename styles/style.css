@@ -30,7 +30,7 @@ footer{
 }
 .fade-in {
     opacity: 0;
-    animation: fadeIn 1.5s ease-in-out 1.5s forwards, slideUp 1s ease-in-out 1.5s;
+    animation: fadeIn 1.5s ease-in-out 1s forwards, slideUp 1s ease-in-out 1s;
   }
   
   @keyframes fadeIn {
@@ -75,7 +75,7 @@ h1{
 }
 .landing{
     margin-top: 28vh;
-    margin-bottom: 33vh;
+    margin-bottom: 31vh;
 }
 #AboutMe{
     display: flex;
@@ -416,4 +416,107 @@ h1{
         }
         
     }
+}
+#ProgrammingGrid{
+    display: grid;
+    
+    margin: 70px 100px;
+
+    grid-template-columns: 1fr;
+    grid-template-rows  : auto;
+    gap: 70px;
+    list-style-type: none;
+
+    .cardContainer{
+
+        display: flex;
+        flex-wrap: wrap;
+        
+    }
+    .card{
+        
+      background-color: #141414;
+      margin: 0 auto;
+      width: 85vw;
+      height: 400px;
+      padding: 20px;
+      display: flex;
+      transition: box-shadow .3s;
+      border-radius: 8px;
+      overflow: hidden;
+      img{
+       
+        width: 711px;
+        height: 400px;
+    }
+       
+       
+    }
+    .card:hover{
+        box-shadow: 0 0 14px 2px #dbdbdb;
+    }
+    a{
+          
+        color: white;
+        text-decoration: none;
+        font-family: 'Metropolis';
+    }
+    .cardContent{
+        flex: 1;
+        flex-direction: column;
+        justify-content: space-between; /* optional for spacing */
+        margin-inline: 20px;
+    }
+    .programDescription{
+        color: #636364;
+    }
+}
+
+
+#MusicGrid{
+    display: grid;
+    
+    margin: 70px 100px;
+
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows  : auto;
+    gap: 70px;
+    list-style-type: none;
+
+    .cardContainer{
+        justify-content: center;
+        display: flex;
+        flex-wrap: wrap;
+        
+    }
+    .card{
+        
+      background-color: #141414;
+      width: 400px;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      transition: box-shadow .3s;
+      border-radius: 8px;
+      img{
+        
+        width: 400px;
+        height: 200px;
+    }
+        a{
+          
+            color: white;
+            text-decoration: none;
+            font-family: 'Metropolis';
+        }
+        .cardContent{
+            margin-inline: 20px;
+        }
+        .songDescription{
+            color: #636364;
+        }
+       
+    }
+  
+   
 }
