@@ -1,4 +1,5 @@
-html{
+
+    html{
     scroll-behavior: smooth ;
 }
 
@@ -11,7 +12,7 @@ body{
 footer{
     font-family: 'Metropolis';
     font-weight: normal;
-    margin-left: 10px;
+    margin-left: 1vw;
     display: flex;
     justify-content: space-between;
     #FooterRight{
@@ -28,10 +29,7 @@ footer{
     font-family: 'Metropolis';
     src: url(../fonts/Metropolis-Regular.otf);
 }
-.fade-in {
-    opacity: 0;
-    animation: fadeIn 1.5s ease-in-out 1s forwards, slideUp 1s ease-in-out 1s;
-  }
+
   
   @keyframes fadeIn {
     from { opacity: 0; }
@@ -41,6 +39,18 @@ footer{
     from{transform: translateY(100%);}
     to{transform: translateY(0%);}
   }
+  .burgerButton{
+   display: none;
+}
+#navCheck{
+    display: none;
+}
+
+  @media only screen and (min-width: 992px){
+    .fade-in {
+        opacity: 0;
+        animation: fadeIn 1.5s ease-in-out 1s forwards, slideUp 1s ease-in-out 1s;
+      }
 h1{
     font-family:'BigJohn' ,sans-serif;
     font-weight: normal;
@@ -498,7 +508,7 @@ h1{
       width: 26vw;
       padding: 1vw;
       display: flex;
-      justify-content: center;
+     
       transition: box-shadow .3s;
       border-radius: 8px;
       
@@ -519,3 +529,501 @@ h1{
   
    
 }
+  }
+
+  @media only screen and (max-width: 750px){
+  
+    h1{
+        font-family:'BigJohn' ,sans-serif;
+        font-weight: normal;
+        font-size: 8vw;
+        text-align: center;
+    }
+    .subtitle{
+        font-family: 'Metropolis';
+        font-weight: normal;
+        font-size: 3.5vw;
+        margin-top: -0.8em;
+        text-align: center;
+    }
+    #landingDescription{
+        font-family: 'Metropolis';
+        font-weight: normal;
+        font-size: 4vw;
+        margin: 5vh 3vw;
+        text-align: center;
+    }
+    .heading{
+        font-family:'BigJohn' ,sans-serif;
+        font-weight: normal;
+        font-size: 8vw;
+        margin:auto;
+    }
+    .bodyText{
+        font-family: 'Metropolis';
+        font-weight: normal;
+        font-size: 1.6vw;
+        line-height: 1.9vw;
+    }
+    .landing{
+        margin-top: 26vh;
+        margin-bottom: 31vh;
+    }
+    #AboutMe{
+        display: flex;
+        padding-top: 20vh;
+        img{
+            margin-left: 8.5vw;
+        }
+        #AboutMeText{
+            margin-left: 4vw;
+            margin-right: 4vw;
+           padding-top: 2vh; 
+        }
+        #AboutMeImage{
+            height: 35vw;
+        }
+    }
+    #Projects{
+        padding-top: 20vh;
+     
+        .heading{
+            margin-left: 8.5vw;
+            margin-bottom: 7vh;
+        }
+        ul{
+           padding: 6vh 15vw;
+            justify-content: center;
+            display: flex;
+            background-color: #141414;
+            margin-inline: 5vw;
+            list-style-type: none;
+          
+        }
+        li{
+        text-align: center;
+        font-family: 'Metropolis';
+        font-weight: normal;
+        font-size: 1.6vw;
+        line-height: 1.9vw;
+        margin-inline: 60px;
+        max-width: min-content;
+        
+        img{
+            width: 14.5vw;
+            transition: all 0.15s;
+        }
+        
+        a{
+            
+            text-decoration: none;
+            color: white;
+          
+        }
+       
+        
+        }
+        li:hover{
+               
+                img{
+                    box-shadow: 0 0 14px 2px #dbdbdb;
+                }
+            
+        }
+        
+    
+    }
+    
+    #Blog{
+        #BlogHeadingContainer{
+            display: flex;
+            justify-content: space-between;
+            #AllBlogs{
+                a{
+                    font-family:'BigJohn' ,sans-serif;
+                    font-weight: normal;
+                    font-size: 3.3vw;
+                }
+            margin-right: 3vw;
+            margin-bottom: 3vh;
+            margin-top: auto;
+            line-height: auto;
+            }
+        }
+        padding-top: 20vh;
+        padding-bottom: 10vh;
+        .heading{
+            margin-left: 8.5vw;
+            margin-bottom: 3vh;
+        }
+        #blogSpace{
+           
+            background-color: #141414;
+            padding: 2vh 3vw;
+            margin: 0 5vw;
+            font-family: 'Metropolis';
+            font-weight: normal;
+            h3{
+                font-size: 2vw;
+            }
+            img{
+                max-width: 33vw;
+            }
+            li{
+                margin-right: 33vw;
+            }
+            
+        }
+        a{
+                color: #636364;
+                text-decoration: none;
+                font-family: 'Metropolis';
+                font-size: large;
+                transition: color 0.15s;
+        }
+        a:hover{
+                
+            color: white;
+            
+        }
+        
+    }
+    #Contact{
+        padding-top: 20vh;
+        margin-bottom: 30vh;
+     
+        .heading{
+            margin-left: 7vw;
+            margin-bottom: 3vh;
+        }
+        section{
+            font-family: 'Metropolis';
+            font-weight: normal;
+            margin-left: 7vw;
+            ul{
+                list-style-type: none;
+                
+                a{
+                    font-size: 1.6vw;
+                    line-height: 4vh;
+                    text-decoration: none;
+                    color: white;
+                    transition: color 0.15s;
+                }
+                a:hover{
+                
+                    color: #636364;
+                    
+                }
+                
+            }
+            #contactName{
+                font-size: 3vw;
+            }
+        }
+    }
+    .navbar{
+        
+        position:fixed;
+        margin: 0 auto; 
+        width: 100%;
+        top: 0;
+        z-index: 100;
+        font-family: 'metropolis';
+        background-color: #dbdbdb;
+        padding: 3vh 0;
+        .burgerButton{
+            font-size: 5vw;
+            color: black;
+           display: block;
+           padding: 1vw 3vw;
+          
+        }
+        #navCheck:checked ~ul{
+            opacity: 100%;
+            left: 0;
+        }
+      
+        
+        
+    }
+    
+        #menu{
+         
+        position: fixed;
+        z-index: 99;
+        opacity: 0;
+        left: -120%;
+        background-color: #141414cb;
+        backdrop-filter: blur(12px);
+        list-style-type: none;
+        width: 100%;
+        height: 100vh;
+        transition: all 0.25s;
+
+        li{
+            color: white;
+            font-size: large;
+            padding-top: 7vh;
+        }
+        a{
+            
+            color: white;
+            text-decoration: none;
+            transition: color 0.15s;
+            font-size: 5vw;
+        }
+        a:hover{
+            
+            color: #636364;
+            
+        }
+        
+        
+        }
+    
+    .navbarBlog{
+        
+        position:fixed;
+        top: 0;
+        width: 100%;
+        margin: 0 auto;
+        font-family: 'metropolis';
+        background-color: #dbdbdb;
+        padding: 2rem;
+        
+        ul{
+            
+            position: relative;
+           
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            width: 100%; 
+            display: flex;
+            li{
+               padding-inline: 5vw;
+                color: black;
+                font-size: large;
+              
+                
+            }
+            a{
+                
+                color: black;
+                text-decoration: none;
+                font-size: large;
+                transition: color 0.15s;
+            }
+            a:hover{
+                
+                color: #636364;
+                
+            }
+            
+            
+        }
+        
+        
+    }
+    #BlogHead{
+        margin-top: 15vh;
+    }
+    #BlogGrid{
+        display: grid;
+        
+        margin: 7vh 20vw;
+        justify-content: center;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows  : auto;
+        gap: 4vw;
+        list-style-type: none;
+    
+        .cardContainer{
+            justify-content: center;
+            display: flex;
+            flex-wrap: wrap;
+            
+        }
+        .card{
+            
+          background-color: #141414;
+          width: 25vw;
+          padding: 1.5vw;
+          display: flex;
+          justify-content: center;
+          transition: box-shadow .3s;
+          border-radius: 8px;
+          overflow: hidden;
+         
+            a{
+              
+                color: white;
+                text-decoration: none;
+                font-family: 'Metropolis';
+            }
+            .cardContent{
+                margin-inline: 1vw;
+            }
+            .blogSample{
+                color: #636364;
+                line-height: 1.5rem;
+            }
+           
+        }
+        .card:hover{
+            box-shadow: 0 0 14px 2px #dbdbdb;
+        }
+    }
+    .blogEntry{
+       
+        font-family: 'Metropolis';
+        margin-left: 1.5vw;
+        margin-right: 1.5vw;
+        cite{
+            color: #dbdbdb;
+        }
+        .e-content{
+           p{
+            line-height: 1.3rem;
+            margin-right: 2vw;
+           }
+           figcaption{
+            line-height: 1.3rem;
+            margin-right: 2vw;
+           }
+           a{
+            text-decoration: none;
+            color: #636364;
+            transition: color 0.15s;
+           }
+           a:hover{
+            color: white;
+           }
+        }
+        h2{
+            padding-top: 20vh;
+            font-weight: normal;
+            font-size: 3rem;
+            margin-bottom: 0px;
+        }
+        h3{
+            font-weight: normal;
+            font-size: 2rem;
+        }
+        .blogSubtitle{
+            display: flex;
+            justify-content: space-between;
+            color: #636364;
+            margin-bottom: 3rem;
+            a{
+                text-decoration: none;
+                color: #dbdbdb;
+                transition: color 0.15s;
+            }
+            a:hover{
+                color: #636364;
+            }
+            
+        }
+    }
+    #ProgrammingGrid{
+        display: grid;
+        
+        margin: 7vh 10vw;
+    
+        grid-template-columns: 1fr;
+        grid-template-rows  : auto;
+        gap: 7vw;
+        list-style-type: none;
+        justify-content: center;
+        .cardContainer{
+    
+            display: flex;
+            flex-wrap: wrap;
+            
+        }
+        .card{
+            
+          background-color: #141414;
+          margin: 0 auto;
+          width: 85vw;
+          height: 50vh;
+          padding: 3vh;
+          display: flex;
+          transition: box-shadow .3s;
+          border-radius: 8px;
+          overflow: hidden;
+          img{
+           
+            width: 70vw;
+           
+        }
+           
+           
+        }
+        .card:hover{
+            box-shadow: 0 0 14px 2px #dbdbdb;
+        }
+        a{
+              
+            color: white;
+            text-decoration: none;
+            font-family: 'Metropolis';
+        }
+        .cardContent{
+            flex: 1;
+            flex-direction: column;
+            justify-content: space-between; /* optional for spacing */
+            margin-inline: 2vw;
+        }
+        .programDescription{
+            color: #636364;
+        }
+    }
+    
+    
+    #MusicGrid{
+        display: grid;
+        
+        margin: 7vh 10vw;
+    
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows  : auto;
+        gap: 3vw;
+        list-style-type: none;
+        justify-content: center;
+        .cardContainer{
+            justify-content: center;
+            display: flex;
+            flex-wrap: wrap;
+            
+        }
+        .card{
+            
+          background-color: #141414;
+          width: 26vw;
+          padding: 1vw;
+          display: flex;
+         
+          transition: box-shadow .3s;
+          border-radius: 8px;
+          
+            a{
+              
+                color: white;
+                text-decoration: none;
+                font-family: 'Metropolis';
+            }
+            .cardContent{
+                margin-inline: 2vw;
+            }
+            .songDescription{
+                color: #636364;
+            }
+           
+        }
+      
+       
+    }
+      }
