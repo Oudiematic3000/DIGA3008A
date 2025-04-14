@@ -234,12 +234,11 @@ h1{
     
     position:sticky;
     top: 2vh;
-    margin: 0 auto;
-    min-width: 400px;
-    max-width: 1000px;
+    margin: 0 auto; 
+    max-width: 80vw;
     font-family: 'metropolis';
     background-color: #dbdbdb;
-    padding: 2rem;
+    padding: 3.5vh 3.5vw;
     border-radius: 10px;
     
     ul{
@@ -247,8 +246,8 @@ h1{
         position: relative;
         justify-content: center;
         list-style-type: none;
-        padding: 0px;
-        margin: 0px;
+        padding: 0;
+        margin: 0;
         width: 100%; 
         display: flex;
         li{
@@ -279,7 +278,7 @@ h1{
 .navbarBlog{
     
     position:fixed;
-    top: 0px;
+    top: 0;
     width: 100%;
     margin: 0 auto;
     font-family: 'metropolis';
@@ -291,12 +290,12 @@ h1{
         position: relative;
        
         list-style-type: none;
-        padding: 0px;
-        margin: 0px;
+        padding: 0;
+        margin: 0;
         width: 100%; 
         display: flex;
         li{
-           padding-inline: 50px;
+           padding-inline: 5vw;
             color: black;
             font-size: large;
           
@@ -321,16 +320,16 @@ h1{
     
 }
 #BlogHead{
-    margin-top: 150px;
+    margin-top: 15vh;
 }
 #BlogGrid{
     display: grid;
     
-    margin: 70px 100px;
-
+    margin: 7vh 20vw;
+    justify-content: center;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows  : auto;
-    gap: 70px;
+    gap: 4vw;
     list-style-type: none;
 
     .cardContainer{
@@ -342,18 +341,14 @@ h1{
     .card{
         
       background-color: #141414;
-      width: 400px;
-      padding: 20px;
+      width: 25vw;
+      padding: 1.5vw;
       display: flex;
       justify-content: center;
       transition: box-shadow .3s;
       border-radius: 8px;
       overflow: hidden;
-      img{
-        
-        width: 400px;
-        height: 200px;
-    }
+     
         a{
           
             color: white;
@@ -361,7 +356,7 @@ h1{
             font-family: 'Metropolis';
         }
         .cardContent{
-            margin-inline: 20px;
+            margin-inline: 1vw;
         }
         .blogSample{
             color: #636364;
@@ -376,18 +371,19 @@ h1{
 .blogEntry{
    
     font-family: 'Metropolis';
-    margin-left: 20px;
+    margin-left: 1.5vw;
+    margin-right: 1.5vw;
     cite{
         color: #dbdbdb;
     }
     .e-content{
        p{
         line-height: 1.3rem;
-        margin-right: 100px;
+        margin-right: 2vw;
        }
        figcaption{
         line-height: 1.3rem;
-        margin-right: 100px;
+        margin-right: 2vw;
        }
        a{
         text-decoration: none;
@@ -399,7 +395,7 @@ h1{
        }
     }
     h2{
-        padding-top: 100px;
+        padding-top: 20vh;
         font-weight: normal;
         font-size: 3rem;
         margin-bottom: 0px;
@@ -427,13 +423,13 @@ h1{
 #ProgrammingGrid{
     display: grid;
     
-    margin: 70px 100px;
+    margin: 7vh 10vw;
 
     grid-template-columns: 1fr;
     grid-template-rows  : auto;
-    gap: 70px;
+    gap: 7vw;
     list-style-type: none;
-
+    justify-content: center;
     .cardContainer{
 
         display: flex;
@@ -445,16 +441,16 @@ h1{
       background-color: #141414;
       margin: 0 auto;
       width: 85vw;
-      height: 400px;
-      padding: 20px;
+      height: 50vh;
+      padding: 3vh;
       display: flex;
       transition: box-shadow .3s;
       border-radius: 8px;
       overflow: hidden;
       img{
        
-        width: 711px;
-        height: 400px;
+        width: 70vw;
+       
     }
        
        
@@ -472,7 +468,7 @@ h1{
         flex: 1;
         flex-direction: column;
         justify-content: space-between; /* optional for spacing */
-        margin-inline: 20px;
+        margin-inline: 2vw;
     }
     .programDescription{
         color: #636364;
@@ -483,13 +479,13 @@ h1{
 #MusicGrid{
     display: grid;
     
-    margin: 70px 100px;
+    margin: 7vh 10vw;
 
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows  : auto;
-    gap: 70px;
+    gap: 3vw;
     list-style-type: none;
-
+    justify-content: center;
     .cardContainer{
         justify-content: center;
         display: flex;
@@ -499,17 +495,13 @@ h1{
     .card{
         
       background-color: #141414;
-      width: 400px;
-      padding: 20px;
+      width: 26vw;
+      padding: 1vw;
       display: flex;
       justify-content: center;
       transition: box-shadow .3s;
       border-radius: 8px;
-      img{
-        
-        width: 400px;
-        height: 200px;
-    }
+      
         a{
           
             color: white;
@@ -517,7 +509,7 @@ h1{
             font-family: 'Metropolis';
         }
         .cardContent{
-            margin-inline: 20px;
+            margin-inline: 2vw;
         }
         .songDescription{
             color: #636364;
