@@ -562,55 +562,64 @@ h1{
     .bodyText{
         font-family: 'Metropolis';
         font-weight: normal;
-        font-size: 1.6vw;
-        line-height: 1.9vw;
+        font-size: 3.5vw;
+       
     }
     .landing{
         margin-top: 26vh;
-        margin-bottom: 31vh;
+        margin-bottom: 32vh;
     }
     #AboutMe{
-        display: flex;
+       
         padding-top: 20vh;
+       
         img{
-            margin-left: 8.5vw;
+           
+            padding: 5vw;
+            float: inline-start;
         }
         #AboutMeText{
+            
             margin-left: 4vw;
             margin-right: 4vw;
            padding-top: 2vh; 
         }
         #AboutMeImage{
-            height: 35vw;
+           
+          height: 50vw;
         }
     }
     #Projects{
         padding-top: 20vh;
-     
+
         .heading{
             margin-left: 8.5vw;
-            margin-bottom: 7vh;
+            margin-bottom: 5vh;
         }
         ul{
-           padding: 6vh 15vw;
-            justify-content: center;
+       
             display: flex;
+            flex-direction: column;
+            padding: 2vh 2vw;
+            justify-content: center;  
             background-color: #141414;
             margin-inline: 5vw;
             list-style-type: none;
-          
+            align-items: center;
         }
         li{
+            display: flex;
+            flex-direction: column;
         text-align: center;
         font-family: 'Metropolis';
         font-weight: normal;
-        font-size: 1.6vw;
-        line-height: 1.9vw;
-        margin-inline: 60px;
-        max-width: min-content;
+        font-size: 5vw;
+        line-height: 5vh;
+        margin: 2vh 2vw;
+
         
         img{
-            width: 14.5vw;
+            width: 50vw;
             transition: all 0.15s;
         }
         
@@ -642,7 +651,7 @@ h1{
                 a{
                     font-family:'BigJohn' ,sans-serif;
                     font-weight: normal;
-                    font-size: 3.3vw;
+                    font-size: 6vw;
                 }
             margin-right: 3vw;
             margin-bottom: 3vh;
@@ -659,27 +668,29 @@ h1{
         #blogSpace{
            
             background-color: #141414;
-            padding: 2vh 3vw;
+            padding: 1vh 3vw;
             margin: 0 5vw;
             font-family: 'Metropolis';
             font-weight: normal;
             h3{
-                font-size: 2vw;
+                font-size: 7vw;
             }
             img{
-                max-width: 33vw;
+                max-width: 80vw;
             }
             li{
-                margin-right: 33vw;
+                margin-right: 10vw;
             }
             
         }
         a{
+              
                 color: #636364;
                 text-decoration: none;
                 font-family: 'Metropolis';
                 font-size: large;
                 transition: color 0.15s;
+                line-height: 5vh;
         }
         a:hover{
                 
