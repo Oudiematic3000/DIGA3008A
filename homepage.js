@@ -1,24 +1,44 @@
+//load button
+const loadButton=document.getElementById("loadButton");
+const loadScreen=document.querySelector('.loadScreen');
+
+const slider = document.getElementById('fader');
+slider.value=1;
+slider.style.opacity=0;
+const bitb = document.querySelector('.bringInTheBass');
+bitb.style.opacity=0;
+
+loadButton.addEventListener('click',()=>{
+  loadScreen.style.opacity=0;
+  loadScreen.style.zIndex=-30;
+
+  slider.style.opacity='100%';
+  bitb.style.opacity='100%';
+})
+
 //prevent scroll
 const isInternalReferrer = document.referrer.includes(window.location.hostname);
 if(!isInternalReferrer){
+window.scrollTo(0, 0);
 document.body.style.overflow='hidden';
+}else{
+  loadScreen.style.opacity=0;
+  loadScreen.style.zIndex=-30;
 }
 let hasSlid=false;
 
 
 //Slider Fade in
 
-const slider = document.getElementById('fader');
-slider.value=1;
-const bitb = document.querySelector('.bringInTheBass');
-bitb.style.opacity=1;
+
 const introduction = document.querySelector('.introduction');
 introduction.style.opacity=0;
 introduction.style.bottom=0+'%';
 
 
 //Slider Audio
-let gainBass, gainMelody, lastGain;
+let gainBass, gainMelody;
+let lastGain=0;
 var muted = false; 
 const audioContext = new AudioContext();
 const melodySource = audioContext.createBufferSource();
@@ -54,6 +74,7 @@ window.addEventListener('pointerdown', () => {
 slider.addEventListener('input', ()=>{
 
         const value = parseFloat(slider.value);
+        bitb.style.transition="none";
         bitb.style.opacity=value;
         introduction.style.opacity=1-value;
         introduction.style.bottom=(1-value)*35+'vh';
@@ -64,19 +85,25 @@ slider.addEventListener('input', ()=>{
           document.body.style.overflow='auto';
           hasSlid=true;
         }
+
 });
 
 //Mute button
 const muteButton=document.getElementById("muteButton");
 muteButton.addEventListener('click', ()=>{
-if(!muted){
+if(!muted){ 
   gainBass.gain.value=0;
   gainMelody.gain.value=0;
   muted=true;
-}else{
+    muteButton.style.backgroundImage='url("../images/MuteSpeaker.png")'; 
+}else{ 
   gainBass.gain.value=lastGain;
   gainMelody.gain.value=1;
   muted=false;
+  
+    muteButton.style.backgroundImage='url("../images/OnSpeaker.png")'; 
+
 }
 
 });
+
