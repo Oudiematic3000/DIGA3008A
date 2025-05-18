@@ -1,3 +1,10 @@
+//prevent scroll
+if(document.referrer===''){
+document.body.style.overflow='hidden';
+}
+let hasSlid=false;
+
+
 //Slider Fade in
 
 const slider = document.getElementById('fader');
@@ -51,6 +58,11 @@ slider.addEventListener('input', ()=>{
         introduction.style.bottom=(1-value)*35+'vh';
         if(!muted) gainBass.gain.value=1-value;
         lastGain=1-value;
+
+        if(!hasSlid && value===0){
+          document.body.style.overflow='auto';
+          hasSlid=true;
+        }
 });
 
 //Mute button

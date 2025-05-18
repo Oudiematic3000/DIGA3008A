@@ -55,8 +55,26 @@ footer{
     writing-mode: vertical-lr;
     height: 55vh;
     border-radius: 9px;
+    background-color: #636364;
      z-index: 10;
-     
+    
+}
+.slider::-webkit-slider-thumb{
+
+  background: url("../images/FaderThumb.png") no-repeat center;
+  background-size: contain;
+  cursor: pointer;
+  border: none;
+  
+}
+.slider::-moz-range-thumb {
+  background: url("../images/FaderThumb.png") no-repeat center;
+  width: 7em;
+  height: 7em;
+  background-size: contain;
+  cursor: pointer;
+  border: none;
+
 }
 .flexGroup{
     display: flex;
