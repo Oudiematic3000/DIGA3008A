@@ -45,7 +45,37 @@ footer{
 #navCheck{
     display: none;
 }
-
+.sliderContainer{
+    margin-left: 5vw;
+    margin-right: 5vw;
+     z-index: 10;
+}
+.slider{
+    appearance: none;
+    writing-mode: vertical-lr;
+    height: 55vh;
+    border-radius: 9px;
+     z-index: 10;
+     
+}
+.flexGroup{
+    display: flex;
+}
+.introduction{
+    position: absolute;
+   
+}
+.bringInTheBass{
+    position: absolute;
+    opacity: 0;
+}
+#muteButton{
+    position: fixed;
+    bottom: 5vh;
+    right: 2vw;
+    height: 5vh;
+    width: 5vh;
+}
   @media only screen and (min-width: 992px){
     .fade-in {
         opacity: 0;
@@ -83,7 +113,7 @@ h1{
     font-size: 1.6vw;
     line-height: 1.9vw;
 }
-.landing{
+.landing{ 
     margin-top: 26vh;
     margin-bottom: 31vh;
 }
@@ -1055,6 +1085,7 @@ h1{
         font-weight: normal;
         font-size: 8vw;
         text-align: center;
+        margin: 8.5vw;
     }
     .subtitle{
         font-family: 'Metropolis';
