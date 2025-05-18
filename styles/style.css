@@ -60,8 +60,9 @@ footer{
     
 }
 .slider::-webkit-slider-thumb{
-
-  background: url("../images/FaderThumb.png") no-repeat center;
+background: url("../images/FaderThumb.png") no-repeat center;
+  width: 7em;
+  height: 7em;
   background-size: contain;
   cursor: pointer;
   border: none;
