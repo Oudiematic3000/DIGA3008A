@@ -8,6 +8,23 @@ slider.style.opacity=0;
 const bitb = document.querySelector('.bringInTheBass');
 bitb.style.opacity=0;
 
+let gainBass, gainMelody;
+let lastGain=0;
+var muted = false; 
+const audioContext = new AudioContext();
+gainBass = audioContext.createGain();
+gainMelody = audioContext.createGain();
+const melodySource = audioContext.createBufferSource();
+const bassSource = audioContext.createBufferSource();
+
+const isInternalReferrer = document.referrer.includes(window.location.hostname);
+
+const introduction = document.querySelector('.introduction');
+introduction.style.opacity=0;
+
+const muteButton=document.getElementById("muteButton");
+
+
 loadButton.addEventListener('click',()=>{
   loadScreen.style.opacity=0;
   loadScreen.style.zIndex=-30;
@@ -17,13 +34,21 @@ loadButton.addEventListener('click',()=>{
 })
 
 //prevent scroll
-const isInternalReferrer = document.referrer.includes(window.location.hostname);
+
+
+
 if(!isInternalReferrer){
 window.scrollTo(0, 0);
 document.body.style.overflow='hidden';
 }else{
   loadScreen.style.opacity=0;
   loadScreen.style.zIndex=-30;
+  introduction.style.opacity=1;
+  slider.style.opacity=1;
+  slider.value=0;
+  gainBass.gain.value=1;
+  lastGain=1;
+  mute();
 }
 let hasSlid=false;
 
@@ -31,24 +56,15 @@ let hasSlid=false;
 //Slider Fade in
 
 
-const introduction = document.querySelector('.introduction');
-introduction.style.opacity=0;
-introduction.style.bottom=0+'%';
 
 
 //Slider Audio
-let gainBass, gainMelody;
-let lastGain=0;
-var muted = false; 
-const audioContext = new AudioContext();
-const melodySource = audioContext.createBufferSource();
-const bassSource = audioContext.createBufferSource();
+
 
 async function audioSetup() {
-gainBass = audioContext.createGain();
 gainBass.gain.value = 0;
 
-gainMelody = audioContext.createGain();
+
 gainMelody.gain.value = 1;
 const melodyBuffer = await fetch('audio/VoyagerMelody.mp3').then(r => r.arrayBuffer()).then(d => audioContext.decodeAudioData(d));
 const bassBuffer = await fetch('audio/VoyagerBass.mp3').then(r => r.arrayBuffer()).then(d => audioContext.decodeAudioData(d));
@@ -88,14 +104,17 @@ slider.addEventListener('input', ()=>{
 
 });
 
-//Mute button
-const muteButton=document.getElementById("muteButton");
-muteButton.addEventListener('click', ()=>{
-if(!muted){ 
-  gainBass.gain.value=0;
+function mute(){
+ gainBass.gain.value=0;
   gainMelody.gain.value=0;
   muted=true;
-    muteButton.style.backgroundImage='url("../images/MuteSpeaker.png")'; 
+  muteButton.style.backgroundImage='url("../images/MuteSpeaker.png")'; 
+}
+//Mute button
+
+muteButton.addEventListener('click', ()=>{
+if(!muted){ 
+ mute();
 }else{ 
   gainBass.gain.value=lastGain;
   gainMelody.gain.value=1;
