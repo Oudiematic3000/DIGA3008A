@@ -1,5 +1,6 @@
 //prevent scroll
-if(document.referrer===''){
+const isInternalReferrer = document.referrer.includes(window.location.hostname);
+if(!isInternalReferrer){
 document.body.style.overflow='hidden';
 }
 let hasSlid=false;
