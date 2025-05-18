@@ -108,7 +108,7 @@ function mute(){
  gainBass.gain.value=0;
   gainMelody.gain.value=0;
   muted=true;
-  muteButton.style.backgroundImage='url("../images/MuteSpeaker.png")'; 
+  muteButton.style.backgroundImage='url("images/MuteSpeaker.png")'; 
 }
 //Mute button
 
@@ -120,7 +120,7 @@ if(!muted){
   gainMelody.gain.value=1;
   muted=false;
   
-    muteButton.style.backgroundImage='url("../images/OnSpeaker.png")'; 
+    muteButton.style.backgroundImage='url("images/OnSpeaker.png")'; 
 
 }
 
