@@ -36,10 +36,50 @@ margin-bottom: 0.5em;
 #trackTitle{
     font-size: 0.75em;
 }
-#genreList{
+.sideMenu{
+    
+    background-color: #141414e7;
+    backdrop-filter: blur(12px);
     position: fixed;
-    bottom: 9vh;
-    left: 3vw;
+    width: 25%;
+    height: 100%;
+    top:0;
+    left: -25%;
+    transition: all 0.5s;
+}
+#trackList{
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+}
+.menuTrackItem{
+    width: 90%;
+  
+    border-bottom: 2px solid #636363;
+    display: grid;
+    grid-template-rows: 2em 1.25em;
+    grid-template-columns: 1.75fr 0.25fr;
+    align-items: center;
+    transition: all 0.15s;
+}
+.menuTrackItem:hover{
+opacity: 50%;
+}
+.menuItemSongDuration{
+    display: flex;
+    justify-content: right;
+    font-size: 0.5em;
+    color: #636363;
+   
+}
+.menuItemGenres{
+
+    font-size: 0.75em;
+    color: #636363;
+     margin-bottom: 1em;
 }
 .menuBarBottom{
     position: fixed;
@@ -52,6 +92,7 @@ margin-bottom: 0.5em;
     grid-template-columns: 1fr 1fr 1fr;
     
 }
+
 .flexColumn{
     display: flex;
     flex-direction: column;

@@ -1,32 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta name="author" content="Ariel Oudmayer" />
-    <meta
-      name="description"
-      content="Music by Ariel Oudmayer"
-    />
+    <meta name="description" content="Music by Ariel Oudmayer" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../../normalize.css">
-    <link rel="stylesheet" href="../../styles/style.css">
-    <link rel="stylesheet" href="musicStyle.css">
+    <link rel="stylesheet" href="../../normalize.css" />
+    <link rel="stylesheet" href="../../styles/style.css" />
+    <link rel="stylesheet" href="musicStyle.css" />
 
-     <script
+    <script
       src="https://kit.fontawesome.com/b4478f8802.js"
       crossorigin="anonymous"
     ></script>
-   
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
     <title>Ariel Oudmayer - Music</title>
-</head>
-<body>
-  <header>
-    <h1 id="BlogHead">Music</h1>
-  </header>
-       <nav class="navbar">
+  </head>
+  <body>
+    <header>
+      <h1 id="BlogHead">Music</h1>
+    </header>
+    <nav class="navbar">
       <input type="checkbox" id="navCheck" />
       <label for="navCheck" class="burgerButton">
         <i class="fa-solid fa-bars"></i>
@@ -34,39 +31,59 @@
       <ul id="menu">
         <li><a href="../../index.html#" class="navLink">Home</a></li>
         <li><a href="../../index.html#AboutMe" class="navLink">About Me</a></li>
-        <li><a href="../../index.html#Projects" class="navLink">Projects</a></li>
+        <li>
+          <a href="../../index.html#Projects" class="navLink">Projects</a>
+        </li>
         <li><a href="../../index.html#Blog" class="navLink">Blog</a></li>
         <li><a href="../../index.html#Contact" class="navLink">Contact</a></li>
       </ul>
     </nav>
-   <section class="bodyText">
+    <section class="bodyText">
+    
+      <div class="sideMenu">
+        <ul id="trackList">
+          <li class="menuTrackItem">
+            <p class="menuItemSongTitle">Song Title</p>
+            <p class="menuItemSongDuration">00:00</p>
+            <p class="menuItemGenres">dog, dog</p>
+          </li>
+
+        </ul>
      
- 
-</li>
-          </nl>
-          <p id="genreList">dog, dog, dog</p>
-          <div class="menuBarBottom">
-            <div class="flexRow" id="trackSelect">
-              <i class="fa-solid fa-bars" id="playlistButton"></i>
-            <p id="trackTitle" >Song Name - Ariel Oudmayer</p>
-            </div>
-            
-            <div class="flexColumn">
-              <input type="range" min="0" max="1" value="0" class="slider" id="scrubber" step="0.01">
-              <div class="flexRow">
-                <i class="fa-solid fa-backward" id="backwardsButton"></i>
-               <div id="playPauseButton"> <i class="fa-solid fa-play"></i></div>
-                <i class="fa-solid fa-forward" id="forwardsButton"></i>
-              </div>
-            </div>
-            
+      </div>
+      
+
+
+     
+      <div class="menuBarBottom">
+        <div class="flexRow" id="trackSelect">
+          <i class="fa-solid fa-bars" id="playlistButton"></i>
+          <p id="trackTitle">Song Name - Ariel Oudmayer</p>
+        </div>
+
+        <div class="flexColumn">
+          <input
+            type="range"
+            min="0"
+            max="1"
+            value="0"
+            class="slider"
+            id="scrubber"
+            step="0.01"
+          />
+          <div class="flexRow">
+            <i class="fa-solid fa-backward" id="backwardsButton"></i>
+            <div id="playPauseButton"><i class="fa-solid fa-play"></i></div>
+            <i class="fa-solid fa-forward" id="forwardsButton"></i>
           </div>
-   </section>
-   <hr>
-   <footer>
-    <p>Ariel Oudmayer 2025.</p>
-    <p  id="FooterRight">Versatile. Adaptable. Supportive. Reliable.</p>
- </footer>
- <script src="music.js"></script>
-</body>
+        </div>
+      </div>
+    </section>
+    <hr />
+    <footer>
+      <p>Ariel Oudmayer 2025.</p>
+      <p id="FooterRight">Versatile. Adaptable. Supportive. Reliable.</p>
+    </footer>
+    <script src="music.js"></script>
+  </body>
 </html>
