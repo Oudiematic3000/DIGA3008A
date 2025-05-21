@@ -1,0 +1,66 @@
+#scrubber{
+width: 100%;
+height: 0.4em;
+margin-bottom: 0.5em;
+}
+#scrubber::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 1em;
+  background: transparent;
+  border: none;
+}
+#scrubber::-webkit-slider-thumb{
+ -webkit-appearance: none; 
+ background-color: white;
+  width: 1em;
+  height: 1em;
+  background-size: contain;
+  cursor: pointer;
+  border: none;
+  border-radius: 10em;
+  
+}
+#scrubber::-moz-range-thumb {
+ background-color: white;
+  width: 1em;
+  height: 1em;
+  background-size: contain;
+  cursor: pointer;
+  border: none;
+  border-radius: 10em;
+
+}
+#playlistButton{
+    margin-left: 2em;
+}
+#trackTitle{
+    font-size: 0.75em;
+}
+#genreList{
+    position: fixed;
+    bottom: 9vh;
+    left: 3vw;
+}
+.menuBarBottom{
+    position: fixed;
+    bottom: 0;
+    display: grid;
+    width: 100%;
+    height: 10vh;
+    background-color: #141414;
+    align-items: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    
+}
+.flexColumn{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+ 
+}
+.flexRow{
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    align-items: center;
+}

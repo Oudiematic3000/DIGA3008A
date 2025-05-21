@@ -34,7 +34,7 @@ loadButton.addEventListener('click',()=>{
 })
 
 //prevent scroll
-
+ 
 
 
 if(!isInternalReferrer){
@@ -64,8 +64,8 @@ let hasSlid=false;
 async function audioSetup() {
 gainBass.gain.value = 0;
 
+if(!isInternalReferrer)gainMelody.gain.value = 1;
 
-gainMelody.gain.value = 1;
 const melodyBuffer = await fetch('audio/VoyagerMelody.mp3').then(r => r.arrayBuffer()).then(d => audioContext.decodeAudioData(d));
 const bassBuffer = await fetch('audio/VoyagerBass.mp3').then(r => r.arrayBuffer()).then(d => audioContext.decodeAudioData(d));
 
@@ -126,3 +126,18 @@ if(!muted){
 
 });
 
+//scrolling nav default behaviour overrwite
+document.querySelectorAll('.navLink').forEach(link => {
+  link.addEventListener('click', function(e) {
+    e.preventDefault(); 
+      const href = this.getAttribute('href');
+
+    if (href === "#") {
+    
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      const target = document.querySelector(href);
+      target?.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+});
