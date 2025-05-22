@@ -1,7 +1,7 @@
 //load button
 const loadButton=document.getElementById("loadButton");
 const loadScreen=document.querySelector('.loadScreen');
-
+const navbar=document.querySelector('.navbar');
 const slider = document.getElementById('fader');
 slider.value=1;
 slider.style.opacity=0;
@@ -41,6 +41,7 @@ loadButton.addEventListener('click',()=>{
 if(!isInternalReferrer){
 window.scrollTo(0, 0);
 document.body.style.overflow='hidden';
+if(mobile)navbar.style.top='-100%';
 }else{
   loadScreen.style.opacity=0;
   loadScreen.style.zIndex=-30;
@@ -108,7 +109,9 @@ slider.addEventListener('input', (e)=>{
 
         if(!hasSlid && value===0){
           document.body.style.overflow='auto';
-          hasSlid=true;
+          if(mobile)
+          navbar.style.top=0;
+        hasSlid=true;
         }
 
 });

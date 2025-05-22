@@ -912,7 +912,7 @@ h1{
        
     }
     .landing{
-        margin-top: 23vh;
+        margin-top: 25vh;
         margin-bottom: 32vh;
     }
     figure{
@@ -1096,6 +1096,7 @@ h1{
         font-family: 'metropolis';
         background-color: #dbdbdb;
         padding: 3vh 0;
+        transition: top 0.5s;
         .burgerButton{
             font-size: 5vw;
             color: black;
@@ -1107,7 +1108,7 @@ h1{
             opacity: 100%;
             left: 0;
         }
-      
+     
         
         
     }
