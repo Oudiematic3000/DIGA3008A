@@ -52,7 +52,7 @@ footer{
 }
 .slider{
     appearance: none;
-   
+    touch-action: none;
     border-radius: 9px;
     background-color: #636364;
      z-index: 10;
@@ -864,7 +864,7 @@ h1{
 .sliderContainer{
    
     justify-content: center;
-    margin-top: 28vh;
+    margin-top: 26vh;
     
 }
 
@@ -912,7 +912,7 @@ h1{
        
     }
     .landing{
-        margin-top: 26vh;
+        margin-top: 23vh;
         margin-bottom: 32vh;
     }
     figure{
