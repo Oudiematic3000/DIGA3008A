@@ -380,250 +380,7 @@ h1{
     
     
 }
-.navbarBlog{
-    
-    position:fixed;
-    top: 0;
-    width: 100%;
-    margin: 0 auto;
-    font-family: 'metropolis';
-    background-color: #dbdbdb;
-    padding: 2rem;
-    
-    ul{
-        
-        position: relative;
-       
-        list-style-type: none;
-        padding: 0;
-        margin: 0;
-        width: 100%; 
-        display: flex;
-        li{
-           padding-inline: 5vw;
-            color: black;
-            font-size: large;
-          
-            
-        }
-        a{
-            
-            color: black;
-            text-decoration: none;
-            font-size: large;
-            transition: color 0.15s;
-        }
-        a:hover{
-            
-            color: #636364;
-            
-        }
-        
-        
-    }
-    
-    
-}
-#BlogHead{
-    margin-top: 15vh;
-}
-#BlogGrid{
-    display: grid;
-    
-    margin: 7vh 20vw;
-    justify-content: center;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows  : auto;
-    gap: 4vw;
-    list-style-type: none;
 
-    .cardContainer{
-        justify-content: center;
-        display: flex;
-        flex-wrap: wrap;
-        
-    }
-    .card{
-        
-      background-color: #141414;
-      width: 25vw;
-      padding: 1.5vw;
-      display: flex;
-      justify-content: center;
-      transition: box-shadow .3s;
-      border-radius: 8px;
-      overflow: hidden;
-     
-        a{
-          
-            color: white;
-            text-decoration: none;
-            font-family: 'Metropolis';
-        }
-        .cardContent{
-            margin-inline: 1vw;
-        }
-        .blogSample{
-            color: #636364;
-            line-height: 1.5rem;
-        }
-       
-    }
-    .card:hover{
-        box-shadow: 0 0 14px 2px #dbdbdb;
-    }
-}
-.blogEntry{
-   
-    font-family: 'Metropolis';
-    margin-left: 1.5vw;
-    margin-right: 1.5vw;
-    cite{
-        color: #dbdbdb;
-    }
-    .e-content{
-       p{
-        line-height: 1.3rem;
-        margin-right: 2vw;
-       }
-       figcaption{
-        line-height: 1.3rem;
-        margin-right: 2vw;
-       }
-       a{
-        text-decoration: none;
-        color: #636364;
-        transition: color 0.15s;
-       }
-       a:hover{
-        color: white;
-       }
-    }
-    h2{
-        padding-top: 20vh;
-        font-weight: normal;
-        font-size: 3rem;
-        margin-bottom: 0px;
-    }
-    h3{
-        font-weight: normal;
-        font-size: 2rem;
-    }
-    .blogSubtitle{
-        display: flex;
-        justify-content: space-between;
-        color: #636364;
-        margin-bottom: 3rem;
-        a{
-            text-decoration: none;
-            color: #dbdbdb;
-            transition: color 0.15s;
-        }
-        a:hover{
-            color: #636364;
-        }
-        
-    }
-}
-#ProgrammingGrid{
-    display: grid;
-    
-    margin: 7vh 10vw;
-
-    grid-template-columns: 1fr;
-    grid-template-rows  : auto;
-    gap: 7vw;
-    list-style-type: none;
-    justify-content: center;
-    .cardContainer{
-
-        display: flex;
-        flex-wrap: wrap;
-        
-    }
-    .card{
-        
-      background-color: #141414;
-      margin: 0 auto;
-      width: 85vw;
-      height: 50vh;
-      padding: 3vh;
-      display: flex;
-      transition: box-shadow .3s;
-      border-radius: 8px;
-      overflow: hidden;
-      img{
-       
-        width: 70vw;
-       
-    }
-       
-       
-    }
-    .card:hover{
-        box-shadow: 0 0 14px 2px #dbdbdb;
-    }
-    a{
-          
-        color: white;
-        text-decoration: none;
-        font-family: 'Metropolis';
-    }
-    .cardContent{
-     
-        
-        justify-content: space-between; 
-        margin-inline: 2vw;
-    }
-    .programDescription{
-        color: #636364;
-    }
-}
-
-
-#MusicGrid{
-    display: grid;
-    
-    margin: 7vh 10vw;
-
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows  : auto;
-    gap: 3vw;
-    list-style-type: none;
-    justify-content: center;
-    .cardContainer{
-        justify-content: center;
-        display: flex;
-        flex-wrap: wrap;
-        
-    }
-    .card{
-        
-      background-color: #141414;
-      width: 26vw;
-      padding: 1vw;
-      display: flex;
-     
-      transition: box-shadow .3s;
-      border-radius: 8px;
-      
-        a{
-          
-            color: white;
-            text-decoration: none;
-            font-family: 'Metropolis';
-        }
-        .cardContent{
-            margin-inline: 2vw;
-        }
-        .songDescription{
-            color: #636364;
-        }
-       
-    }
-  
-   
-}
   }
 
   @media only screen and (max-width: 992px){
@@ -896,50 +653,7 @@ h1{
         
         }
     
-    .navbarBlog{
-        
-        position:fixed;
-        top: 0;
-        width: 100%;
-        margin: 0 auto;
-        font-family: 'metropolis';
-        background-color: #dbdbdb;
-        padding: 2rem;
-        
-        ul{
-            
-            position: relative;
-           
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-            width: 100%; 
-            display: flex;
-            li{
-               padding-inline: 5vw;
-                color: black;
-                font-size: large;
-              
-                
-            }
-            a{
-                
-                color: black;
-                text-decoration: none;
-                font-size: large;
-                transition: color 0.15s;
-            }
-            a:hover{
-                
-                color: #636364;
-                
-            }
-            
-            
-        }
-        
-        
-    }
+    
     #BlogHead{
         margin-top: 15vh;
     }
@@ -1144,13 +858,32 @@ h1{
       }
 
   @media only screen and (max-width: 750px){
-  
+    .flexGroup{
+        justify-content: center;
+    }
+.sliderContainer{
+   
+    justify-content: center;
+    margin-top: 28vh;
+    
+}
+
+#fader{
+    height: 40vh;
+}
+.bringInTheBass{
+    display: flex;
+    width: 100%;
+  justify-content: center;
+ 
+}
+
     h1{
         font-family:'BigJohn' ,sans-serif;
         font-weight: normal;
         font-size: 8vw;
         text-align: center;
-        margin: 8.5vw;
+  
     }
     .subtitle{
         font-family: 'Metropolis';

@@ -1,3 +1,163 @@
+   html{
+    scroll-behavior: smooth ;
+}
+
+body{
+    background-color: black;
+    color: white;
+    
+    
+}
+footer{
+    font-family: 'Metropolis';
+    font-weight: normal;
+    margin-left: 1vw;
+    display: flex;
+    justify-content: space-between;
+    #FooterRight{
+        text-align: right;
+    }
+}
+
+@font-face {
+    font-family: 'BigJohn';
+    src: url("../../fonts/BIG\ JOHN.otf");
+    
+}
+@font-face {
+    font-family: 'Metropolis';
+    src: url(../../fonts/Metropolis-Regular.otf);
+}
+
+
+  .burgerButton{
+   display: none;
+}
+
+.heading{
+    font-family:'BigJohn' ,sans-serif;
+    font-weight: normal;
+    font-size: 3.3vw;
+    margin:auto;
+}
+.bodyText{
+    font-family: 'Metropolis';
+    font-weight: normal;
+    font-size: 1.6vw;
+    line-height: 1.9vw;
+}
+
+#FooterRight {
+    text-align: right;
+}
+
+
+    h1{
+        font-family:'BigJohn' ,sans-serif;
+        font-weight: normal;
+        font-size: 4.5vw;
+        margin-left: 8.5vw;
+    }
+
+    .navbar{
+        position:sticky;
+        top: 2vh;
+        margin: 0 auto; 
+        max-width: 80vw;
+        font-family: 'metropolis';
+        background-color: #dbdbdb;
+        padding: 3.5vh 3.5vw;
+        border-radius: 10px;
+        
+        ul{
+            position: relative;
+            justify-content: center;
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            width: 100%; 
+            display: flex;
+            li{
+                flex-grow: 1;
+                color: black;
+                font-size: large;
+                text-align: center;
+            }
+            a{
+                color: black;
+                text-decoration: none;
+                transition: color 0.15s;
+                font-size: large;
+            }
+            a:hover{
+                color: #636364;
+            }
+        }
+    }
+
+    #BlogHead{
+        margin-top: 15vh;
+    }
+#navCheck{
+    display: none;
+}
+
+#ProgrammingGrid{
+    display: grid;
+    
+    margin: 7vh 10vw;
+
+    grid-template-columns: 1fr;
+    grid-template-rows  : auto;
+    gap: 7vw;
+    list-style-type: none;
+    justify-content: center;
+    .cardContainer{
+
+        display: flex;
+        flex-wrap: wrap;
+        
+    }
+    .card{
+        
+      background-color: #141414;
+      margin: 0 auto;
+      width: 85vw;
+      height: 50vh;
+      padding: 3vh;
+      display: flex;
+      transition: box-shadow .3s;
+      border-radius: 8px;
+      overflow: hidden;
+      img{
+       
+        width: 70vw;
+       
+    }
+       
+       
+    }
+    .card:hover{
+        box-shadow: 0 0 14px 2px #dbdbdb;
+    }
+    a{
+          
+        color: white;
+        text-decoration: none;
+        font-family: 'Metropolis';
+    }
+    .cardContent{
+     
+        
+        justify-content: space-between; 
+        margin-inline: 2vw;
+    }
+    .programDescription{
+        color: #636364;
+    }
+}
+
+
 .toTopButton{
     position: fixed;
     right: 1vw;

@@ -24,6 +24,7 @@ introduction.style.opacity=0;
 
 const muteButton=document.getElementById("muteButton");
 
+var mobile=window.matchMedia("(max-width: 750px)")
 
 loadButton.addEventListener('click',()=>{
   loadScreen.style.opacity=0;
@@ -87,13 +88,21 @@ window.addEventListener('pointerdown', () => {
 }, { once: true });
 
 //Slider Event
-slider.addEventListener('input', ()=>{
+slider.addEventListener('input', (e)=>{
 
+        if(mobile){
+          e.preventDefault();
+        }
         const value = parseFloat(slider.value);
         bitb.style.transition="none";
         bitb.style.opacity=value;
         introduction.style.opacity=1-value;
-        introduction.style.bottom=(1-value)*35+'vh';
+        if(mobile){
+          introduction.style.bottom=(1-value)*45+'vh';
+        }else{
+          introduction.style.bottom=(1-value)*35+'vh';
+        }
+        
         if(!muted) gainBass.gain.value=1-value;
         lastGain=1-value;
 
