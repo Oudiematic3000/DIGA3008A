@@ -9,18 +9,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../../normalize.css">
     <link rel="stylesheet" href="../../styles/style.css">
+    <link rel="stylesheet" href="programmingStyle.css">
+     <script
+      src="https://kit.fontawesome.com/b4478f8802.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
     <title>Ariel Oudmayer - Programming</title>
 </head>
 <body>
   <header>
     <h1 id="BlogHead">Programming</h1>
   </header>
-    <nav class="navbarBlog">
-        <ul>
-          <li><a href="../../index.html#Projects">Back to Home</a></li>
-          <li><a href="index.html#">Back to Top</a></li>
-        </ul>
-      </nav>
+     <nav class="navbar">
+      <input type="checkbox" id="navCheck" />
+      <label for="navCheck" class="burgerButton">
+        <i class="fa-solid fa-bars"></i>
+      </label>
+      <ul id="menu">
+        <li><a href="../../index.html#" class="navLink">Home</a></li>
+        <li><a href="../../index.html#AboutMe" class="navLink">About Me</a></li>
+        <li>
+          <a href="../../index.html#Projects" class="navLink">Projects</a>
+        </li>
+        <li><a href="../../index.html#Blog" class="navLink">Blog</a></li>
+        <li><a href="../../index.html#Contact" class="navLink">Contact</a></li>
+      </ul>
+    </nav>
+          <button type="button" class="toTopButton"><i class="fa-solid fa-arrow-up"></i></button>
+
    <section class="bodyText">
      
     <nl id="ProgrammingGrid">
@@ -102,5 +123,6 @@
     <p>Ariel Oudmayer 2025.</p>
     <p  id="FooterRight">Versatile. Adaptable. Supportive. Reliable.</p>
  </footer>
+ <script src="programming.js"></script>
 </body>
 </html>

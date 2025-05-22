@@ -1,7 +1,7 @@
 let trackArray=[
     {
 
-    trackTitle: "House track demo",
+    trackTitle: "House Track demo",
     genres: "Electronic, House",
     path: "audio/HouseTrackDemo.mp3",
     duration: "5:18",

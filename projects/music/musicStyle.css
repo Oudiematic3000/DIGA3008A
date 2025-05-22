@@ -68,6 +68,10 @@ margin-bottom: 0.5em;
 .menuTrackItem:hover{
 opacity: 50%;
 }
+#trackSelect:hover{
+    transition: all 0.15s;
+opacity: 50%;
+}
 .menuItemSongDuration{
     display: flex;
     justify-content: right;

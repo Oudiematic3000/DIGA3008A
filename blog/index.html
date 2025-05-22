@@ -10,6 +10,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../normalize.css" />
     <link rel="stylesheet" href="../styles/style.css" />
+    <link rel="stylesheet" href="blogStyle.css" />
+     <script
+      src="https://kit.fontawesome.com/b4478f8802.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
     <title>Ariel Oudmayer - Blog</title>
   </head>
 
@@ -17,17 +27,26 @@
     <header>
       <h1 id="BlogHead">Blogs</h1>
     </header>
-    <nav class="navbarBlog">
-      <ul>
-        <li><a href="../index.html#Blog">Back to Home</a></li>
-        <li><a href="index.html#">Back to Top</a></li>
+      <nav class="navbar">
+      <input type="checkbox" id="navCheck" />
+      <label for="navCheck" class="burgerButton">
+        <i class="fa-solid fa-bars"></i>
+      </label>
+      <ul id="menu">
+        <li><a href="../../index.html#" class="navLink">Home</a></li>
+        <li><a href="../../index.html#AboutMe" class="navLink">About Me</a></li>
+        <li>
+          <a href="../../index.html#Projects" class="navLink">Projects</a>
+        </li>
+        <li><a href="../../index.html#Blog" class="navLink">Blog</a></li>
+        <li><a href="../../index.html#Contact" class="navLink">Contact</a></li>
       </ul>
     </nav>
-
+    <button type="button" class="toTopButton"><i class="fa-solid fa-arrow-up"></i></button>
     <nl id="BlogGrid">
       <li class="cardContainer">
         <div class="card">
-          <a href="index.html#blog7">
+          <a href="#blog7">
             <section class="cardContent">
               <h2>Blog 7 - Just Put it on My Tab: The State of South African Government Websites.</h2>
               <p>Queueing at home affairs might be faster.
@@ -44,7 +63,7 @@
       </li>
       <li class="cardContainer">
         <div class="card">
-          <a href="index.html#blog4">
+          <a href="#blog4">
             <section class="cardContent">
               <h2>Blog 4 - Wireframing and a real plan</h2>
               <p>Oh yeah... It's all coming together...</p>
@@ -63,7 +82,7 @@
       </li>
       <li class="cardContainer">
         <div class="card">
-          <a href="index.html#blog3">
+          <a href="#blog3">
             <section class="cardContent">
               <h2>Blog 3 - Ideas for this website</h2>
               <p>The basis for a landing page</p>
@@ -82,7 +101,7 @@
       </li>
       <li class="cardContainer">
         <div class="card">
-          <a href="index.html#blog2">
+          <a href="#blog2">
             <section class="cardContent">
               <h2>Blog 2 - Hypertext</h2>
               <p>Where do we go from here?</p>
@@ -102,7 +121,7 @@
       </li>
       <li class="cardContainer">
         <div class="card">
-          <a href="index.html#blog1">
+          <a href="#blog1">
             <section class="cardContent">
               <h2>Blog 1 - Using GitHub and reading stuff</h2>
               <p>I.E. - The Interactive Media Media Interaction Media</p>
@@ -123,9 +142,9 @@
 
     <hr />
 
-    <article class="h-entry blogEntry">
+    <article class="h-entry blogEntry" id="blog1">
       <hgroup>
-        <h2 class="p-name" id="blog1">Using GitHub and reading stuff</h2>
+        <h2 class="p-name" >Using GitHub and reading stuff</h2>
         <div class="blogSubtitle">
           <div>
             <p class="p-summary">
@@ -194,9 +213,10 @@
           call myself competent in it.
         </p>
       </section>
+       <hr />
     </article>
 
-    <hr />
+   
 
     <article class="h-entry blogEntry" id="blog2">
       <hgroup>
@@ -322,8 +342,9 @@
           not to get attached to an idea yet.
         </figcaption>
       </section>
+         <hr />
     </article>
-    <hr />
+ 
 
     <article class="h-entry blogEntry" id="blog3">
       <hgroup>
@@ -426,9 +447,10 @@
           and buttons will be done with JS which I'll need to look into.
         </p>
       </section>
+      <hr />
     </article>
 
-    <hr />
+    
     <article class="h-entry blogEntry" id="blog4">
       <hgroup>
         <h2 class="p-name">Wireframing and a real plan</h2>
@@ -489,8 +511,9 @@
           website takes shape.
         </p>
       </section>
+      <hr />
     </article>
-    <hr />
+    
     <article class="h-entry blogEntry" id="blog7">
       <hgroup>
         <h2 class="p-name">
@@ -603,11 +626,13 @@
           This disclaimer is present on the contact page. The department responsible for social security and information protection warning that their site might be erroneous and they don't accept any responsibility for their misinformation or out of date information. The irony is palpable.
         </p>
       </section>
+        <hr />
     </article>
-    <hr />
+  
     <footer>
       <p>Ariel Oudmayer 2025.</p>
       <p id="FooterRight">Versatile. Adaptable. Supportive. Reliable.</p>
     </footer>
+    <script src="blog.js"></script>
   </body>
 </html>

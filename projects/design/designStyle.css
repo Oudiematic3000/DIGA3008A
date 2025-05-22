@@ -1,0 +1,10 @@
+.toTopButton{
+    position: fixed;
+    right: 1vw;
+    bottom: 6vh;
+    width: 7vh;
+    height: 7vh;
+    font-size: 1.5em;
+    border-radius: 7vh;
+    border-style:  none;
+}
