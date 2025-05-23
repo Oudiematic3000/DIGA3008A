@@ -1,3 +1,6 @@
+var mobile=window.matchMedia("(max-width: 750px)").matches;
+var monitor=window.matchMedia("(min-width: 992px)").matches;
+
 const blogEntries=document.querySelectorAll('.blogEntry');
 blogEntries.forEach(element => {
     element.style.display='none';
@@ -29,4 +32,23 @@ if(blog.id ===id){
 const toTopButton=document.querySelector('.toTopButton');
 toTopButton.addEventListener('click',()=>{
   window.scrollTo(0, 0);
+})
+
+const cardButton=document.querySelector('.cardButton');
+const listButton=document.querySelector('.listButton');
+const blogGrid=document.querySelector('.BlogGrid');
+cardButton.addEventListener('click',()=>{
+    cards.forEach(element => {
+        element.classList='card';
+    });
+    blogGrid.classList='BlogGrid';
+})
+
+listButton.addEventListener('click',()=>{
+    cards.forEach(element => {
+        element.classList='cardListMode';
+       
+    
+    });
+    blogGrid.classList='BlogGrid BlogGridListMode';
 })
