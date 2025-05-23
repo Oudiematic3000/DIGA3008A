@@ -67,14 +67,7 @@ let hasSlid=false;
 
 async function audioSetup() {
 
-  if (melodySource) {
-    try { melodySource.stop(); } catch (e) {}
-    melodySource.disconnect();
-  }
-  if (bassSource) {
-    try { bassSource.stop(); } catch (e) {}
-    bassSource.disconnect();
-  }
+
 
   gainBass.gain.value = 0;
   if (!isInternalReferrer) gainMelody.gain.value = 1;
