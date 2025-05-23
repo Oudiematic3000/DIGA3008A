@@ -26,7 +26,14 @@ body {
 img{
     max-width: 60vw;
 }
-
+   a{
+                text-decoration: none;
+                color: #dbdbdb;
+                transition: color 0.15s;
+            }
+            a:hover{
+                color: #636364;
+            }
 footer {
     font-family: 'Metropolis';
     font-weight: normal;
@@ -47,6 +54,84 @@ footer {
         margin-left: 8.5vw;
     }
 
+    #BlogHead{
+        margin-top: 15vh;
+    }
+
+    .blogEntry{
+        font-family: 'Metropolis';
+        margin-left: 16vw;
+        margin-right: 16vw;
+        cite{
+            color: #dbdbdb;
+        }
+        .e-content{
+            p{
+                line-height: 1.3rem;
+                margin-right: 2vw;
+            }
+            figure{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                img{
+                  
+                    width: max-content;
+                    
+                }
+            }
+            figcaption{
+                font-size: small;
+                color: #dbdbdb;
+                line-height: 1.3rem;
+             
+            }
+            a{
+                text-decoration: none;
+                color: #636364;
+                transition: color 0.15s;
+            }
+            a:hover{
+                color: white;
+            }
+        }
+        h2{
+            padding-top: 20vh;
+            font-weight: normal;
+            font-size: 3rem;
+            margin-bottom: 0px;
+        }
+        h3{
+            font-weight: normal;
+            font-size: 2rem;
+        }
+        
+        
+    }
+   
+
+
+.toTopButton{
+    position: fixed;
+    right: 1vw;
+    bottom: 6vh;
+    width: 7vh;
+    height: 7vh;
+    font-size: 1.5em;
+    border-radius: 7vh;
+    border-style:  none;
+}
+@media only screen and (min-width: 992px){
+    .bodyText{
+    font-family: 'Metropolis';
+    font-weight: normal;
+    font-size: 1.6vw;
+    line-height: 1.9vw;
+}
+img{
+    max-height: 60vh;
+}
     .navbar{
         position:sticky;
         top: 2vh;
@@ -82,118 +167,6 @@ footer {
             }
         }
     }
-
-    #BlogHead{
-        margin-top: 15vh;
-    }
-
-    .blogEntry{
-        font-family: 'Metropolis';
-        margin-left: 10vw;
-        margin-right: 10vw;
-        cite{
-            color: #dbdbdb;
-        }
-        .e-content{
-            p{
-                line-height: 1.3rem;
-                margin-right: 2vw;
-            }
-            figcaption{
-                line-height: 1.3rem;
-                margin-right: 2vw;
-            }
-            a{
-                text-decoration: none;
-                color: #636364;
-                transition: color 0.15s;
-            }
-            a:hover{
-                color: white;
-            }
-        }
-        h2{
-            padding-top: 20vh;
-            font-weight: normal;
-            font-size: 3rem;
-            margin-bottom: 0px;
-        }
-        h3{
-            font-weight: normal;
-            font-size: 2rem;
-        }
-        .blogSubtitle{
-            display: flex;
-            justify-content: space-between;
-            color: #636364;
-            margin-bottom: 3rem;
-            a{
-                text-decoration: none;
-                color: #dbdbdb;
-                transition: color 0.15s;
-            }
-            a:hover{
-                color: #636364;
-            }
-        }
-        
-    }
-    #BlogGrid{
-    display: grid;
-    
-    margin: 7vh 20vw;
-    justify-content: center;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows  : auto;
-    gap: 4vw;
-    list-style-type: none;
-
-    .cardContainer{
-        justify-content: center;
-        display: flex;
-        flex-wrap: wrap;
-        
-    }
-    .card{
-        
-      background-color: #141414;
-      width: 25vw;
-      padding: 1.5vw;
-      display: flex;
-      justify-content: center;
-      transition: box-shadow .3s;
-      border-radius: 8px;
-      overflow: hidden;
-     
-        a{
-          
-            color: white;
-            text-decoration: none;
-            font-family: 'Metropolis';
-        }
-        .cardContent{
-            margin-inline: 1vw;
-        }
-        .blogSample{
-            color: #636364;
-            line-height: 1.5rem;
-        }
-       
-    }
-    .card:hover{
-        box-shadow: 0 0 14px 2px #dbdbdb;
-    }
-}
-
-.toTopButton{
-    position: fixed;
-    right: 1vw;
-    bottom: 6vh;
-    width: 7vh;
-    height: 7vh;
-    font-size: 1.5em;
-    border-radius: 7vh;
-    border-style:  none;
 }
  @media only screen and (max-width: 750px){
 h1{

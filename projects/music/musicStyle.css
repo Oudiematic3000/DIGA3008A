@@ -70,13 +70,13 @@ footer{
 width: 100%;
 height: 0.4em;
 margin-bottom: 0.5em;
-align-items: center;
 }
 #scrubber::-webkit-slider-runnable-track {
   width: 100%;
   height: 1em;
   background: transparent;
   border: none;
+  
 }
 #scrubber::-webkit-slider-thumb{
  -webkit-appearance: none; 
@@ -219,6 +219,12 @@ opacity: 50%;
     .sideMenu{
         width: 100%;
         margin-top: 10vh;
+    }
+    .menuBarBottom{
+        grid-template-columns: 0.75fr 1.25fr;
+    }
+    #scrubber{
+        width: 80%;
     }
     h1{
         font-family:'BigJohn' ,sans-serif;

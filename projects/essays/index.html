@@ -1,29 +1,320 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta name="author" content="Ariel Oudmayer" />
-    <meta
-      name="description"
-      content="Essays by Ariel Oudmayer"
-    />
+    <meta name="description" content="Essays by Ariel Oudmayer" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../../normalize.css">
-    <link rel="stylesheet" href="../../styles/style.css">
+    <link rel="stylesheet" href="../../normalize.css" />
+    <link rel="stylesheet" href="essayStyle.css" />
     <title>Ariel Oudmayer - Essays</title>
-</head>
-<body>
-  <header>
-    <h1 id="BlogHead">Essays</h1>
-  </header>
-    <nav class="navbarBlog">
-        <ul>
-          <li><a href="../../index.html#Projects">Back to Home</a></li>
-          <li><a href="index.html#">Back to Top</a></li>
-        </ul>
-      </nav>
-   <section class="bodyText">
-    All the essays I've written:
-   </section>
+  </head>
+  <body>
+    <header>
+      <h1 id="BlogHead">Essays</h1>
+    </header>
+    <nav class="navbar">
+      <input type="checkbox" id="navCheck" />
+      <label for="navCheck" class="burgerButton">
+        <i class="fa-solid fa-bars"></i>
+      </label>
+      <ul id="menu">
+        <li><a href="../index.html#" class="navLink">Home</a></li>
+        <li><a href="../index.html#AboutMe" class="navLink">About Me</a></li>
+        <li>
+          <a href="../index.html#Projects" class="navLink">Projects</a>
+        </li>
+        <li><a href="../index.html#Blog" class="navLink">Blog</a></li>
+        <li><a href="../index.html#Contact" class="navLink">Contact</a></li>
+      </ul>
+    </nav>
+    <article class="h-entry blogEntry">
+      <hgroup>
+        <h2 class="p-name">
+          Just Put in on My Tab: The State of South African Government Websites
+        </h2>
+        <div class="blogSubtitle">
+          <div>
+            <p class="p-summary">An Essay (Essay 1 UX & UI Analysis)</p>
+            <p>Blog 1</p>
+          </div>
+          <div>
+            <p>
+              <a class="p author h-card" href="../index.html">
+                Ariel Oudmayer</a
+              >
+            </p>
+            <time class="dt-published" datetime="2025-04-20 20:00:00"
+              >20 April 2025</time
+            >
+          </div>
+        </div>
+      </hgroup>
+      <section class="e-content">
+        <p>
+          The paradoxical dichotomy of South Africa is that of a government
+          determined to keep up with worldwide technological standards while one
+          of its largest demographics is still stunted in their access to smart
+          technology from the lasting effects of a now decades-defunct
+          oppressive regime. The bare minimum that is required of a government
+          website is to be accessible to its target users and to aid those
+          target users. Do South African government websites consider this? This
+          essay addresses the worst offender of the country’s official websites:
+          The website for the South African Social Security Agency- and
+          discusses how it utterly fails to consider its biggest demographic;
+          analyses its haphazard UI/UX design choices and examines what effects
+          poor UI/UX design have on the South African people.
+        </p>
 
-</body>
+        <h3>Context on SASSA</h3>
+
+        <p>
+          SASSA (South African Social Security Agency) is a government agency
+          responsible for providing social grants to economically vulnerable of
+          South Africa, such as those in need of child support, people with
+          disabilities and crucially: older people. It is also responsible for
+          dissemination of correct information to the public and according to
+          the website’s values page, it values ‘Integrity, being honest,
+          accountable, reliable and showing high moral values.’ [1]
+        </p>
+        <h3>SASSA’s Neglected Userbase</h3>
+        <p>
+          As of 2024, approximately 6,1 million people in South Africa are over
+          the age of 60. [2] According to a 2020 census, 72% of that older
+          population relies on social grants from SASSA. Additionally, 71% of
+          older persons receiving social grants belong to ethnic groups
+          previously oppressed under the Apartheid regime. [3] All this to say
+          that SASSA’s target audience is largely older persons and the
+          economically impoverished. Good UI/UX design is about designing your
+          website for your target audience. Has SASSA considered their target
+          audience in their UI/UX design? A 2022 study on older South Africans’
+          use of cell phones and the development of an information sharing app
+          for this group found that 91% of older persons in South Africa used
+          pushbutton phones. [4] This is supported by sales from South Africa’s
+          mobile retailers indicating that feature phones are still popular
+          among the economically vulnerable and the elderly. Popular feature
+          phone brands such as Nokia, Mobicel, Itel, and Stylo have average
+          screen resolutions of 130x200 pixels. [5, 6] This is what SASSA’s
+          website looks like at this screen ratio:
+        </p>
+        <figure>
+          <img
+            src="images/SASSAFeaturePhoneRatio.png"
+            alt="SASSA's website unusable and unadjusted for a feature phone"
+          />
+          <figcaption>Figure 1: SASSA homepage at 130x200px [7]</figcaption>
+        </figure>
+        <p>
+          Immediately, the website is unusable on 91% of the cellular phones of
+          its biggest demographic- and that’s with the merciful assumption of an
+          internet browser working on a feature phone in the first place.
+        </p>
+        <p>
+          SASSA’s demographic also largely encompasses people with disabilities.
+          In 2020 there were an estimated 11 million people in South Africa with
+          vision loss, 370 thousand of which were blind. [7] SASSA’s homepage
+          features a scrolling image display. Enabling a screen reader on any
+          image except the first one causes the page to be interpreted
+          incorrectly and display almost no information:
+        </p>
+        <figure>
+          <img
+            src="images/SASSAScreenRead.png"
+            alt="SASSA's website missing main content when parsed through a screenreader."
+          />
+          <figcaption>
+            Figure 2: How Firefox's screen reader interprets the homepage while
+            scrolled to the 2nd image. [7]
+          </figcaption>
+        </figure>
+        <p>
+          How is it that a government agency whose objective is to aid these
+          vulnerable groups can so egregiously overlook them in the design of
+          their website – a communication channel that has become the global
+          standard for accessing information?
+        </p>
+        <h3>SASSA’s Subpar UI/UX Design</h3>
+        <p>
+          While SASSA’s website may be borderline inoperable for these groups,
+          its UI/UX design is negligent and half-baked even for users who
+          wouldn’t need any accessibility consideration. The header of the home
+          page is an image carousel. The images are non-intractable and mostly
+          introduce the SASSA heads of department. One of the slides prompts the
+          reader to find their COVID-SRD (Social Relief of Distress) application
+          status. Giving the benefit of the doubt to the website that this grant
+          may still apply in 2025 to those who were affected by COVID and not
+          that it’s simply an out of date announcement- we are met with this
+          when navigating to the COVID-SRD grant page:
+        </p>
+        <figure>
+          <img
+            src="images/SASSABlankGrantPage.png"
+            alt="SASSA's blank COVID-SRD grant page."
+          />
+          <figcaption>Figure 3: The blank COVID-SRD grant page. [7]</figcaption>
+        </figure>
+        <p>
+          As with most of this site’s content, it is not possible to know
+          whether this content is outdated, missing or removed- leaving users
+          confused and unaided. Another link to the COVID-SRD grant page links
+          directly to the general grant application page which is deceptive and
+          may lead users to apply for the incorrect grant.
+        </p>
+        <p>
+          The search bar on the home page seems to function by searching the
+          website’s folder structure for HTML pages and returning them as links
+          to said pages. Some pages behave erroneously when accessed in this
+          manner. The mission and values page displays barebones, unparsed HTML
+          code when accessed this way:
+        </p>
+        <figure>
+          <img
+            src="images/SASSARawHTML.png"
+            alt="Unedited screenshot of the Mission and Values page as accessed from the search bar."
+          />
+          <figcaption>
+            Figure 4: Unedited screenshot of the Mission and Values page as
+            accessed from the search bar. [9]
+          </figcaption>
+        </figure>
+        <p>
+          The homepage feed appears to be recent announcements, the most recent
+          being “Tips on how to identify fake vacancies and fake news.” Another
+          blank page. The rest of the entries on the front page consist of
+          single low resolution screenshots of posters, with one entry being the
+          second page of a document supposedly containing the grant payment
+          dates for April 2025. Poetically, the first line on this page reads
+          “For more information […] Contact SASSA customer care.” [10]
+        </p>
+        <p>
+          On the right side of the page there are social media widgets for the
+          SASSA Twitter and Facebook pages. The Twitter widget does not display
+          at all. The Facebook widget does not resize its content to fit the
+          block and as such doesn’t convey any useful information.
+        </p>
+        <p>
+          The site also features a “SASSA slide gallery” on the left sidebar.
+          The display is animated with jarring 3D transitions, the fullscreen
+          button does not work and the images themselves are non-descript photos
+          of SASSA staff with no captions.
+        </p>
+        <p>
+          Lastly, the existence of a disclaimer page warning that the website -
+          for the government agency responsible for aiding the country’s most
+          vulnerable groups - might contain erroneous content and they don't
+          accept any responsibility for their misinformation or out of date
+          information. This is unacceptable. As earlier stated, the bare minimum
+          that is required of a government website is to be accessible to its
+          target users and to aid those target users. A government website may
+          not simply excuse itself from ethical design, correct and current
+          information and accountability.
+        </p>
+        <figure>
+          <img
+            src="images/SASSADisclaimer.png"
+            alt="Disclaimer on SASSA website absolving themselves of responsibility for accurate information."
+          />
+          <figcaption>
+            Figure 5: The information disclaimer on the SASSA website. [11]
+          </figcaption>
+        </figure>
+        <h3>The Bigger Picture</h3>
+        <p>
+          There remains large gaps in access to internet technology in the
+          world: between the youth and elderly, between the privileged and
+          underprivileged, between rural and urban communities. Ethical UI/UX
+          design should ultimately be about minimising these gaps, especially in
+          South Africa where these larger demographics are underrepresented in
+          design considerations. Nanjira Sambuli advocates that the first step
+          in removing these inequalities is adopting a ‘no-one-gets-left-behind’
+          design philosophy for the sustainable development of technology. [12]
+        </p>
+        <p>
+          The South African peoples’ disdain for government bureaucracy is
+          tragically a unifying force for the nation. The research paper cited
+          earlier on the development of Yabelana (an information dissemination
+          app designed for older South Africans) found that technological
+          artefacts and websites can be effective means of communicating data
+          with the older population and that with proper guidance and training,
+          they felt mastery and confidence in their ability to use the app to
+          find needed information. [4, 4 page 80] It is not above our means to
+          design technology with these groups in mind and it is not above their
+          means to utilise it. There is a future in which South Africa is united
+          by their confidence in the government to deliver adequate services to
+          the entire nation. It is up to us as the people to make these issues
+          known and it is up to the government of South Africa to remember them
+          and the people they affect.
+        </p>
+        <h3>References</h3>
+        <p>
+          <cite>
+            [1] “Our vision, mission and values,” SASSA.gov.za,
+            https://www.sassa.gov.za/Pages/Our-Vision,-Mission-and-Values.aspx
+            (accessed Apr. 20, 2025).
+          </cite>
+        </p>
+        <p>
+          <cite>
+            [2] “South Africa’s population surpasses the 63 million mark,”
+            Statssa.gov.za, https://www.statssa.gov.za/?p=17430 (accessed Apr.
+            20, 2025).
+          </cite>
+        </p>
+        <p>
+          <cite>
+            [3] “Marginalised Groups Indicator Report,” www.statssa.gov.za,
+            http://www.statssa.gov.za/publications/03-19-05/03-19-052020.pdf
+            (accessed Apr. 20, 2025).
+          </cite>
+        </p>
+        <p>
+          <cite>
+            [4] Roos, Vera & Hoffman, Jaco & Erasmus, Mianda & Kriel, Elizabeth
+            & Van der Vaart, Leoni. (2022). Older South Africans’ Cell Phone Use
+            in Diverse Settings: A Baseline Assessment.
+            10.1007/978-3-030-94606-7_6. Box 3.4 Policy brief. eDirectory
+            Services (Yabelana) for Older South Africans by Local Government.
+            Page 79. (accessed Apr. 20, 2025).
+          </cite>
+        </p>
+        <p>
+          <cite>
+            [5] H. Labuschagne, “South Africa’s feature phones here to stay until ...,” MyBroadband.co.za, https://mybroadband.co.za/news/smartphones/506062-south-africas-feature-phones-here-to-stay-until-smartphone-prices-drop.html (accessed Apr. 20, 2025).
+          </cite>
+        </p>
+         <p>
+          <cite>
+[6] “Nokia 2690 Specifications,” Nokia 2690 - Full phone specifications, https://www.gsmarena.com/nokia_2690-3004.php (accessed Apr. 20, 2025).          </cite>
+        </p>
+        <p>
+          <cite>
+[7] “HomePage,” SASSA.gov.za, https://www.sassa.gov.za/SitePages/HomePage.aspx (accessed Apr. 20, 2025).</cite>
+        </p>
+        <p>
+          <cite>
+          [8] “Country Map & Estimates of Vision Loss - South Africa,” The International Agency for the Prevention of Blindness, https://www.iapb.org/learn/vision-atlas/magnitude-and-projections/countries/south-africa (accessed Apr. 20, 2025).
+          </cite>
+        </p>
+         <p>
+          <cite>
+[9] “Our vision, mission and values (error),” SASSA.gov.za, https://www.sassa.gov.za/SiteAssets/PageContent/Our-Vision-Mission-and-Values.txt (accessed Apr. 20, 2025).
+          </cite>
+        </p>
+         <p>
+          <cite>
+[10] “Sassa announces social grant payment dates for April 2025,” SASSA.gov.za, https://www.sassa.gov.za/newsroom/articles/Pages/SASSA-announces-social-grant-payment-dates-for-April-2025-.aspx (accessed Apr. 20, 2025).
+          </cite>
+        </p>
+         <p>
+          <cite>
+            [11] “Disclaimer,” SASSA.gov.za, https://www.sassa.gov.za/SitePages/Disclaimer.aspx (accessed Apr. 20, 2025).
+          </cite>
+        </p>
+        <p>
+          <cite>
+[12] S. Magnoni, “What is Digital Equality? an interview with Nanjira Sambuli,” World Economic Forum, https://www.weforum.org/stories/2019/04/digital-equality-interview-nanjira-sambuli/ (accessed Apr. 20, 2025).
+          </cite>
+        </p>
+      </section>
+    </article>
+  </body>
 </html>
