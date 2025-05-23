@@ -28,6 +28,13 @@ if(blog.id ===id){
         
     
 }
+const urlParams = new URLSearchParams(window.location.search);
+if (urlParams.get('from') === 'seeMore') {
+    const hash = window.location.hash;
+    if (hash) {
+        displaySingleBlog(hash);
+    }
+}
 
 const toTopButton=document.querySelector('.toTopButton');
 toTopButton.addEventListener('click',()=>{

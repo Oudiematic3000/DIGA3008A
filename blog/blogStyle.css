@@ -158,7 +158,7 @@ footer {
     justify-content: center;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows  : auto;
-    gap: 4vw;
+    gap: 2em;
     list-style-type: none;
 
     .cardContainer{
@@ -250,7 +250,204 @@ footer {
         gap: 1vh;
     }
 }
+    @media only screen and (max-width: 992px){
+    h1{
+        font-family:'BigJohn' ,sans-serif;
+        font-weight: normal;
+        font-size: 8vw;
+        text-align: center;
+  
+    }
+      #BlogHead{
+        margin-left: 0;
+    }
+     .heading{
+        font-family:'BigJohn' ,sans-serif;
+        font-weight: normal;
+        font-size: 8vw;
+        margin:auto;
+    }
+    .bodyText{
+        font-family: 'Metropolis';
+        font-weight: normal;
+        font-size: 3.5vw;
+       line-height: 1.2rem;
+    }
+     .navbar{
+        
+        position:fixed;
+        margin: 0 auto; 
+        width: 100%;
+        top: 0;
+        z-index: 100;
+        font-family: 'metropolis';
+        background-color: #dbdbdb;
+        padding: 3vh 0;
+        transition: top 0.5s;
+        .burgerButton{
+            font-size: 5vw;
+            color: black;
+           display: block;
+           padding: 1vw 3vw;
+          
+        }
+        #navCheck:checked ~ul{
+            opacity: 100%;
+            left: 0;
+        }
+     
+        
+        
+    }
     
+        #menu{
+         
+        position: fixed;
+        z-index: 99;
+        opacity: 0;
+        left: -120%;
+        background-color: #141414cb;
+        backdrop-filter: blur(12px);
+        list-style-type: none;
+        width: 100%;
+        height: 100vh;
+        transition: all 0.25s;
+
+        li{
+            color: white;
+            font-size: large;
+            padding-top: 7vh;
+        }
+        a{
+            
+            color: white;
+            text-decoration: none;
+            transition: color 0.15s;
+            font-size: 5vw;
+        }
+        a:hover{
+            
+            color: #636364;
+            
+        }
+        
+        
+        }
+            .BlogGrid{
+        display: grid;
+        
+        margin: 7vh 7vw;
+        justify-content: center;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows  : auto;
+        gap: 4vw;
+        list-style-type: none;
+    
+        .cardContainer{
+            justify-content: center;
+            display: flex;
+            flex-wrap: wrap;
+            
+        }
+        .card{
+            
+          background-color: #141414;
+          width: 40vw;
+          padding: 1.5vw;
+          display: flex;
+          justify-content: center;
+          transition: box-shadow .3s;
+          border-radius: 8px;
+          overflow: hidden;
+         
+            a{
+              
+                color: white;
+                text-decoration: none;
+                font-family: 'Metropolis';
+            }
+            .cardContent{
+                margin-inline: 1vw;
+            }
+            .blogSample{
+                color: #636364;
+                line-height: 1.5rem;
+            }
+           
+        }
+      
+        .card:hover{
+            box-shadow: 0 0 14px 2px #dbdbdb;
+        }
+        
+    .cardListMode{
+        width: 70vw;
+        gap: 1vh;
+    }
+    
+    .BlogGrid{
+         grid-template-columns: 1fr 1fr 1fr;
+    }
+    }
+    .blogEntry{
+       
+        font-family: 'Metropolis';
+        margin-left: 5vw;
+        margin-right: 5vw;
+        cite{
+            color: #dbdbdb;
+        }
+        .e-content{
+           p{
+            line-height: 1.3rem;
+            margin-right: 2vw;
+           }
+           figcaption{
+            line-height: 1.3rem;
+            margin-right: 2vw;
+           }
+           a{
+            text-decoration: none;
+            color: #636364;
+            transition: color 0.15s;
+           }
+           a:hover{
+            color: white;
+           }
+           img{
+         
+            max-width: 85vw;
+           
+           }
+        }
+        h2{
+            padding-top: 20vh;
+            font-weight: normal;
+            font-size: 3rem;
+            margin-bottom: 0px;
+        }
+        h3{
+            font-weight: normal;
+            font-size: 2rem;
+        }
+        .blogSubtitle{
+            display: flex;
+            justify-content: space-between;
+            color: #636364;
+            margin-bottom: 3rem;
+            a{
+                text-decoration: none;
+                color: #dbdbdb;
+                transition: color 0.15s;
+            }
+            a:hover{
+                color: #636364;
+            }
+            
+        }
+    }
+   
+    }
 @media only screen and (max-width: 750px){
     h1{
         font-family:'BigJohn' ,sans-serif;
@@ -464,4 +661,5 @@ footer {
 
 .BlogGridListMode{
         grid-template-columns: 1fr;
+      
     }

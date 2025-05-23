@@ -140,7 +140,12 @@ background: url("../images/FaderThumb.png") no-repeat center;
 #loadImage{
         width: 25vw;
     }
-
+#BlogHead{
+        margin-top: 15vh;
+    }
+ #blogSpaceText{
+            margin-right: 20vw;
+           }
 @media only screen and (min-width: 992px){
     .fade-in {
         opacity: 0;
@@ -384,12 +389,36 @@ h1{
   }
 
   @media only screen and (max-width: 992px){
-  
+    .flexGroup{
+        justify-content: center;
+    }
+.sliderContainer{
+   
+    justify-content: center;
+    margin-top: 26vh;
+    
+}
+
+#fader{
+    height: 40vh;
+}
+.bringInTheBass{
+    display: flex;
+    width: 100%;
+  justify-content: center;
+ 
+}
+.introduction{
+    position: absolute;
+   bottom: 45vh;
+}
+
     h1{
         font-family:'BigJohn' ,sans-serif;
         font-weight: normal;
         font-size: 8vw;
         text-align: center;
+  
     }
     .subtitle{
         font-family: 'Metropolis';
@@ -414,11 +443,11 @@ h1{
     .bodyText{
         font-family: 'Metropolis';
         font-weight: normal;
-        font-size: 2.6vw;
-       
+        font-size: 2.5vw;
+    
     }
     .landing{
-        margin-top: 26vh;
+        margin-top: 25vh;
         margin-bottom: 32vh;
     }
     figure{
@@ -459,8 +488,8 @@ h1{
        
             display: grid;
             grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
             padding: 2vh 2vw;
-            gap: 3vw;
             justify-content: center;  
             background-color: #141414;
             margin-inline: 5vw;
@@ -473,13 +502,13 @@ h1{
         text-align: center;
         font-family: 'Metropolis';
         font-weight: normal;
-        font-size: 3vw;
+        font-size: 5vw;
         line-height: 5vh;
         margin: 2vh 2vw;
 
         
         img{
-            width: 30vw;
+            width: 25vw;
             transition: all 0.15s;
         }
         
@@ -533,7 +562,7 @@ h1{
             font-family: 'Metropolis';
             font-weight: normal;
             h3{
-                font-size: 5vw;
+                font-size: 6vw;
             }
             img{
                 max-width: 80vw;
@@ -541,6 +570,7 @@ h1{
             li{
                 margin-right: 10vw;
             }
+           
             
         }
         a{
@@ -557,8 +587,13 @@ h1{
             color: white;
             
         }
-        
+    
     }
+       #blogSpaceText{
+            margin-right: 6vw;
+            line-height: 1.3rem;
+            font-size: 1rem;
+           }
     #Contact{
         padding-top: 20vh;
         margin-bottom: 30vh;
@@ -575,7 +610,7 @@ h1{
                 list-style-type: none;
                 
                 a{
-                    font-size: 4vw;
+                    font-size: 4.3vw;
                     line-height: 6vh;
                     text-decoration: none;
                     color: white;
@@ -603,6 +638,7 @@ h1{
         font-family: 'metropolis';
         background-color: #dbdbdb;
         padding: 3vh 0;
+        transition: top 0.5s;
         .burgerButton{
             font-size: 5vw;
             color: black;
@@ -614,7 +650,7 @@ h1{
             opacity: 100%;
             left: 0;
         }
-      
+     
         
         
     }
@@ -653,210 +689,8 @@ h1{
         
         }
     
-    
-    #BlogHead{
-        margin-top: 15vh;
     }
-    #BlogGrid{
-        display: grid;
-        
-        margin: 7vh 7vw;
-        justify-content: center;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows  : auto;
-        gap: 4vw;
-        list-style-type: none;
-    
-        .cardContainer{
-            justify-content: center;
-            display: flex;
-            flex-wrap: wrap;
-            
-        }
-        .card{
-            
-          background-color: #141414;
-          width: 40vw;
-          padding: 1.5vw;
-          display: flex;
-          justify-content: center;
-          transition: box-shadow .3s;
-          border-radius: 8px;
-          overflow: hidden;
-         
-            a{
-              
-                color: white;
-                text-decoration: none;
-                font-family: 'Metropolis';
-            }
-            .cardContent{
-                margin-inline: 1vw;
-            }
-            .blogSample{
-                color: #636364;
-                line-height: 1.5rem;
-            }
-           
-        }
-        .card:hover{
-            box-shadow: 0 0 14px 2px #dbdbdb;
-        }
-    }
-    .blogEntry{
-       
-        font-family: 'Metropolis';
-        margin-left: 1.5vw;
-        margin-right: 1.5vw;
-        cite{
-            color: #dbdbdb;
-        }
-        .e-content{
-           p{
-            line-height: 1.3rem;
-            margin-right: 2vw;
-           }
-           figcaption{
-            line-height: 1.3rem;
-            margin-right: 2vw;
-           }
-           a{
-            text-decoration: none;
-            color: #636364;
-            transition: color 0.15s;
-           }
-           a:hover{
-            color: white;
-           }
-           img{
-            max-width: 90vw;
-           }
-        }
-        h2{
-            padding-top: 20vh;
-            font-weight: normal;
-            font-size: 3rem;
-            margin-bottom: 0px;
-        }
-        h3{
-            font-weight: normal;
-            font-size: 2rem;
-        }
-        .blogSubtitle{
-            display: flex;
-            justify-content: space-between;
-            color: #636364;
-            margin-bottom: 3rem;
-            a{
-                text-decoration: none;
-                color: #dbdbdb;
-                transition: color 0.15s;
-            }
-            a:hover{
-                color: #636364;
-            }
-            
-        }
-    }
-    #ProgrammingGrid{
-        display: grid;
-        
-        margin: 7vh 10vw;
-    
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows  : auto;
-        gap: 4vh 3vw;
-        list-style-type: none;
-        justify-content: center;
-        .cardContainer{
-    
-            display: flex;
-            flex-wrap: wrap;
-            
-        }
-        .card{
-            
-          background-color: #141414;
-          margin: 0 auto;
-          width: 38vw;
-          
-          padding: 3vh 3vw;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          transition: box-shadow .3s;
-          border-radius: 8px;
-       
-          video{
-            max-width: 40vw;
-          }
-           
-           
-        }
-        .card:hover{
-            box-shadow: 0 0 14px 2px #dbdbdb;
-        }
-        a{
-              
-            color: white;
-            text-decoration: none;
-            font-family: 'Metropolis';
-        }
-        .cardContent{
-           
-            margin-inline: 2vw;
-        }
-        .programDescription{
-            color: #636364;
-        }
-    }
-    
-    
-    #MusicGrid{
-        display: grid;
-        
-        margin: 7vh 10vw;
-    
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows  : auto;
-        gap: 4vh;
-        list-style-type: none;
-        justify-content: center;
-        .cardContainer{
-            justify-content: center;
-            display: flex;
-            flex-wrap: wrap;
-            
-        }
-        .card{
-            
-          background-color: #141414;
-          width: 40vw;
-          padding: 2vh 0;
-          display: flex;
-          justify-content: center;
-          transition: box-shadow .3s;
-          border-radius: 8px;
-          
-            a{
-              
-                color: white;
-                text-decoration: none;
-                font-family: 'Metropolis';
-            }
-            .cardContent{
-                margin-inline: 2vw;
-            }
-            .songDescription{
-                color: #636364;
-            }
-           
-        }
-      
-       
-    }
-      }
-
+ 
   @media only screen and (max-width: 750px){
     .flexGroup{
         justify-content: center;
@@ -1034,6 +868,7 @@ h1{
             li{
                 margin-right: 10vw;
             }
+           
             
         }
         a{
@@ -1050,8 +885,11 @@ h1{
             color: white;
             
         }
-        
+    
     }
+       #blogSpaceText{
+            margin-right: 5vw;
+           }
     #Contact{
         padding-top: 20vh;
         margin-bottom: 30vh;
@@ -1148,207 +986,9 @@ h1{
         }
     
     }
-    #BlogHead{
-        margin-top: 15vh;
-    }
-    #BlogGrid{
-        display: grid;
-        
-        margin: 7vh 7vw;
-        justify-content: center;
-        grid-template-columns: 1fr;
-        grid-template-rows  : auto;
-        gap: 4vw;
-        list-style-type: none;
-    
-        .cardContainer{
-            justify-content: center;
-            display: flex;
-            flex-wrap: wrap;
-            
-        }
-        .card{
-            
-          background-color: #141414;
-          width: 70vw;
-          padding: 1.5vw;
-          display: flex;
-          justify-content: center;
-          transition: box-shadow .3s;
-          border-radius: 8px;
-          overflow: hidden;
-         
-            a{
-              
-                color: white;
-                text-decoration: none;
-                font-family: 'Metropolis';
-            }
-            .cardContent{
-                margin-inline: 1vw;
-            }
-            .blogSample{
-                color: #636364;
-                line-height: 1.5rem;
-            }
-           
-        }
-        .card:hover{
-            box-shadow: 0 0 14px 2px #dbdbdb;
-        }
-    }
-    .blogEntry{
-       
-        font-family: 'Metropolis';
-        margin-left: 1.5vw;
-        margin-right: 1.5vw;
-        cite{
-            color: #dbdbdb;
-        }
-        .e-content{
-           p{
-            line-height: 1.3rem;
-            margin-right: 2vw;
-           }
-           figcaption{
-            line-height: 1.3rem;
-            margin-right: 2vw;
-           }
-           a{
-            text-decoration: none;
-            color: #636364;
-            transition: color 0.15s;
-           }
-           a:hover{
-            color: white;
-           }
-           img{
-            max-width: 90vw;
-           }
-        }
-        h2{
-            padding-top: 20vh;
-            font-weight: normal;
-            font-size: 3rem;
-            margin-bottom: 0px;
-        }
-        h3{
-            font-weight: normal;
-            font-size: 2rem;
-        }
-        .blogSubtitle{
-            display: flex;
-            justify-content: space-between;
-            color: #636364;
-            margin-bottom: 3rem;
-            a{
-                text-decoration: none;
-                color: #dbdbdb;
-                transition: color 0.15s;
-            }
-            a:hover{
-                color: #636364;
-            }
-            
-        }
-    }
-    #ProgrammingGrid{
-        display: grid;
-        
-        margin: 7vh 10vw;
-    
-        grid-template-columns: 1fr;
-        grid-template-rows  : auto;
-        gap: 7vw;
-        list-style-type: none;
-        justify-content: center;
-        .cardContainer{
-    
-            display: flex;
-            flex-wrap: wrap;
-            
-        }
-        .card{
-            
-          background-color: #141414;
-          margin: 0 auto;
-          width: 80vw;
-          
-          padding: 4vh 3vh;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          transition: box-shadow .3s;
-          border-radius: 8px;
-       
-          video{
-            max-width: 80vw;
-          }
-           
-           
-        }
-        .card:hover{
-            box-shadow: 0 0 14px 2px #dbdbdb;
-        }
-        a{
-              
-            color: white;
-            text-decoration: none;
-            font-family: 'Metropolis';
-        }
-        .cardContent{
-           
-            margin-inline: 2vw;
-        }
-        .programDescription{
-            color: #636364;
-        }
-    }
     
     
-    #MusicGrid{
-        display: grid;
-        
-        margin: 7vh 10vw;
     
-        grid-template-columns: 1fr;
-        grid-template-rows  : auto;
-        gap: 4vh;
-        list-style-type: none;
-        justify-content: center;
-        .cardContainer{
-            justify-content: center;
-            display: flex;
-            flex-wrap: wrap;
-            
-        }
-        .card{
-            
-          background-color: #141414;
-          width: 80vw;
-          padding: 2vh 0;
-          display: flex;
-          justify-content: center;
-          transition: box-shadow .3s;
-          border-radius: 8px;
-          
-            a{
-              
-                color: white;
-                text-decoration: none;
-                font-family: 'Metropolis';
-            }
-            .cardContent{
-                margin-inline: 2vw;
-            }
-            .songDescription{
-                color: #636364;
-            }
-           
-        }
-      
-       
-    }
       
 
       
