@@ -66,6 +66,16 @@ let hasSlid=false;
 //Slider Audio
 
 async function audioSetup() {
+
+  if (melodySource) {
+    try { melodySource.stop(); } catch (e) {}
+    melodySource.disconnect();
+  }
+  if (bassSource) {
+    try { bassSource.stop(); } catch (e) {}
+    bassSource.disconnect();
+  }
+
   gainBass.gain.value = 0;
   if (!isInternalReferrer) gainMelody.gain.value = 1;
 
@@ -76,27 +86,27 @@ async function audioSetup() {
   const bassBuffer = await fetch('audio/VoyagerBass.mp3')
     .then(r => r.arrayBuffer())
     .then(d => audioContext.decodeAudioData(d));
+
+
   melodySource = audioContext.createBufferSource();
   melodySource.buffer = melodyBuffer;
+  melodySource.loop = true;
   melodySource.connect(gainMelody).connect(audioContext.destination);
 
   bassSource = audioContext.createBufferSource();
   bassSource.buffer = bassBuffer;
+  bassSource.loop = true;
   bassSource.connect(gainBass).connect(audioContext.destination);
 
   const startTime = audioContext.currentTime + 0.1;
   melodySource.start(startTime);
-  melodySource.loop = true;
   bassSource.start(startTime);
-  bassSource.loop = true;
 
-  return true; 
+  return true;
 }
 
 
-window.addEventListener('pointerdown', () => {
-  audioSetup();
-}, { once: true });
+
 
 //Slider Event
 slider.addEventListener('input', (e)=>{
