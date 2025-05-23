@@ -149,6 +149,49 @@
               <figcaption class="p-summary">The final user flow for the website.</figcaption>
             </figure>
       </section>
+      <section class="h-entry">
+        <h2>Design Considerations for Javascript</h2>
+        <h3>The Goal:</h3>
+        <p>The design goals of this site have not changed much since their inception. If anything I'm far more proud
+          of the robustness of my wireframes and how much easier they made producing each page.
+          The process of creating this site has taught me a lot about the value of planning and using wireframes to
+          structure your design.
+        </p>
+        <h3>Javascript: </h3>
+        <p>For this submission, I really wanted to implement my showcase features like the landing page introduction, visualiser
+          and music player. I haven't managed to get the visualiser to a presentable state so it's going to have to wait for
+          the next submission for its debut. landing page and music player are fully working though, and
+          have translated almost one-to-one from their wireframes.
+        </p>
+         <h3>The Landing Page:</h3>
+        <p>
+          The landing page features a melody track playing before using a slider to fade in 
+          the bass track along with my credentials- Immediately establishing the motif of the site and
+          creating the connection between my character and the role of bass. The user is prevented from scrolling
+          before sliding the track up to ensure engagement with the showpiece. A mute button is also fixed
+          to the screen so that the user may disable the looping audio at any point.
+        </p>
+        <p>
+          The synced up tracks required me to learn how the web audio API works. It's a very cool, node-based system
+          that allows manipulation of audio at runtime. I'm quite lucky I've been working on a similar system for another subject,
+          so the idea of converting and decoding audio into buffers wasn't very unfamiliar.
+        </p>
+        <h3>The Music Page:</h3>
+        <p>
+          The goal of the music page was to look and work like any music streaming software. It has a tracklist side menu,
+          a time-tracking scrubber and rewind, play/pause, and skip buttons. The visualiser will also go on this page.
+          This page is almost entirely JS based, as the audio elements are generated via JS from an array.
+        </p>
+        <h3>Other Minor Features:</h3>
+        <p>
+          All offshoot pages have had their navigation updated to be consistent with the home page and as such
+          have been given a 'to top' button fixed in the corner. The blog page features view options between a card display,
+          which gives more information about each blog, or a list view, which gives a linear, concise, chronological
+          sorting. The blog page additionally no longer displays all blogs at once, which may be disorienting for the user and also result in
+          a very long page. Instead, clicking on a card displays just that blog.
+        </p>
+          
+      </section>
     </article>
     <hr>
     <article class="h-entry blogEntry">

@@ -14,8 +14,8 @@ var muted = false;
 const audioContext = new AudioContext();
 gainBass = audioContext.createGain();
 gainMelody = audioContext.createGain();
-const melodySource = audioContext.createBufferSource();
-const bassSource = audioContext.createBufferSource();
+let melodySource;
+let bassSource;
 
 const isInternalReferrer = document.referrer.includes(window.location.hostname);
 
@@ -26,13 +26,16 @@ const muteButton=document.getElementById("muteButton");
 
 var mobile=window.matchMedia("(max-width: 750px)")
 
-loadButton.addEventListener('click',()=>{
+loadButton.addEventListener('click',async ()=>{
+  const audioReady= await audioSetup();
+  if(audioReady){
   loadScreen.style.opacity=0;
   loadScreen.style.zIndex=-30;
 
   slider.style.opacity='100%';
   bitb.style.opacity='100%';
-})
+  }
+}, { once: true });
 
 //prevent scroll
  
@@ -62,27 +65,34 @@ let hasSlid=false;
 
 //Slider Audio
 
-
 async function audioSetup() {
-gainBass.gain.value = 0;
+  gainBass.gain.value = 0;
+  if (!isInternalReferrer) gainMelody.gain.value = 1;
 
-if(!isInternalReferrer)gainMelody.gain.value = 1;
+  const melodyBuffer = await fetch('audio/VoyagerMelody.mp3')
+    .then(r => r.arrayBuffer())
+    .then(d => audioContext.decodeAudioData(d));
 
-const melodyBuffer = await fetch('audio/VoyagerMelody.mp3').then(r => r.arrayBuffer()).then(d => audioContext.decodeAudioData(d));
-const bassBuffer = await fetch('audio/VoyagerBass.mp3').then(r => r.arrayBuffer()).then(d => audioContext.decodeAudioData(d));
+  const bassBuffer = await fetch('audio/VoyagerBass.mp3')
+    .then(r => r.arrayBuffer())
+    .then(d => audioContext.decodeAudioData(d));
+  melodySource = audioContext.createBufferSource();
+  melodySource.buffer = melodyBuffer;
+  melodySource.connect(gainMelody).connect(audioContext.destination);
 
-melodySource.buffer = melodyBuffer;
-melodySource.connect(gainMelody).connect(audioContext.destination);
+  bassSource = audioContext.createBufferSource();
+  bassSource.buffer = bassBuffer;
+  bassSource.connect(gainBass).connect(audioContext.destination);
 
-bassSource.buffer = bassBuffer;
-bassSource.connect(gainBass).connect(audioContext.destination);
+  const startTime = audioContext.currentTime + 0.1;
+  melodySource.start(startTime);
+  melodySource.loop = true;
+  bassSource.start(startTime);
+  bassSource.loop = true;
 
-const startTime = audioContext.currentTime + 0.1;
-melodySource.start(startTime);
-melodySource.loop=true;
-bassSource.start(startTime);
-bassSource.loop=true;
+  return true; 
 }
+
 
 window.addEventListener('pointerdown', () => {
   audioSetup();
