@@ -12,7 +12,7 @@ footer{
     font-family: 'Metropolis';
     font-weight: normal;
     margin-left: 1vw;
-    display: flex;
+    display: none;
     justify-content: space-between;
     #FooterRight{
         text-align: right;
@@ -178,6 +178,47 @@ opacity: 50%;
     gap: 1em;
     align-items: center;
 }
+.carousel{
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+     overflow: hidden;
+      width: 100%;
+}
+.carouselImages{
+    display: flex;
+     transition: transform 0.4s;
+ align-items: center;
+ justify-content: center;
+    img{
+        max-height: 80vh;
+        max-width: 90vw;
+    }
+ 
+}
+.prev{
+    position: absolute;
+    left: 2em;
+    bottom: 5%;
+    border-radius: 2em;
+    border-style: none;
+    width: 1.5em;
+    height: 1.5em;
+}
+.next{
+     position: absolute;
+    right: 2em;
+    bottom: 5%;
+       border-radius: 2em;
+    border-style: none;
+    width: 1.5em;
+    height: 1.5em;
+    
+}
+#sorryMessage{
+    margin-left: 0.5em;
+    margin-top: 0.5em;
+    
+}
 @media only screen and (min-width: 992px){
 .navbar{
         position:sticky;
@@ -313,6 +354,17 @@ opacity: 50%;
     }
 
  @media only screen and (max-width: 750px){
+    .prev{
+    position: absolute;
+    left: 2em;
+    bottom: 25%;
+}
+.next{
+     position: absolute;
+    right: 2em;
+    bottom: 25%;
+    
+}
     .sideMenu{
         width: 100%;
         margin-top: 10vh;

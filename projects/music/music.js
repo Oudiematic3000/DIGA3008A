@@ -135,3 +135,69 @@ function toggleSideMenu(){
     }
 }
 trackSelect.addEventListener('click',toggleSideMenu);
+
+
+//carousel
+
+let imageArray=[
+    {
+
+    path: "images/AntidotesComparison.png",
+    index: 0
+},
+{
+    path: "images/i have short hamstrings.png",
+    index: 1
+},
+{
+    path: "images/Meatwood Flack comparison.png",
+    index: 2
+},
+{
+    path: "images/Nah no worries.png",
+    index: 3
+},
+{
+    path: "images/PetroComparison.png",
+    index: 4
+},
+{
+    path: "images/sitting on the grass of my lawn.png",
+    index: 5
+},
+{
+    path: "images/The in a bit.png",
+    index: 6
+},
+{
+    path: "images/Wheeeze.png",
+    index: 7
+},
+
+
+];
+const carouselImages = document.querySelector('.carouselImages');
+const img=carouselImages.querySelector('img');
+const nextButton = document.querySelector('.next');
+const prevButton = document.querySelector('.prev');
+
+let currentIndex = 0;
+
+function updateCarousel(index){
+    img.src=imageArray[index].path;
+}
+
+nextButton.addEventListener('click', () => {
+    console.log(currentIndex)
+  if (currentIndex < 8) {
+    currentIndex++;
+  updateCarousel(currentIndex)
+  }
+});
+
+prevButton.addEventListener('click', () => {
+  if (currentIndex > 0) {
+    currentIndex--;
+    updateCarousel(currentIndex)
+  }
+});
