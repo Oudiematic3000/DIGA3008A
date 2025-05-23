@@ -130,7 +130,7 @@ function toggleSideMenu(){
         sideMenu.style.left='0';
         isOpen=true;
     }else{
-        sideMenu.style.left='-25%';
+        sideMenu.style.left='-100%';
         isOpen=false;
     }
 }

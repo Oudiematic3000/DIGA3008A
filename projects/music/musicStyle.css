@@ -1,7 +1,76 @@
+html{
+    scroll-behavior: smooth ;
+}
+
+body{
+    background-color: black;
+    color: white;
+    
+    
+}
+footer{
+    font-family: 'Metropolis';
+    font-weight: normal;
+    margin-left: 1vw;
+    display: flex;
+    justify-content: space-between;
+    #FooterRight{
+        text-align: right;
+    }
+}
+
+@font-face {
+    font-family: 'BigJohn';
+    src: url("../../fonts/BIG\ JOHN.otf");
+    
+}
+@font-face {
+    font-family: 'Metropolis';
+    src: url(../../fonts/Metropolis-Regular.otf);
+}
+
+
+  .burgerButton{
+   display: none;
+}
+
+.heading{
+    font-family:'BigJohn' ,sans-serif;
+    font-weight: normal;
+    font-size: 3.3vw;
+    margin:auto;
+}
+.bodyText{
+    font-family: 'Metropolis';
+    font-weight: normal;
+    font-size: 1.6vw;
+    line-height: 1.9vw;
+}
+
+#FooterRight {
+    text-align: right;
+}
+
+
+    h1{
+        font-family:'BigJohn' ,sans-serif;
+        font-weight: normal;
+        font-size: 4.5vw;
+        margin-left: 8.5vw;
+    }
+
+    
+    #BlogHead{
+        margin-top: 15vh;
+    }
+#navCheck{
+    display: none;
+}
 #scrubber{
 width: 100%;
 height: 0.4em;
 margin-bottom: 0.5em;
+align-items: center;
 }
 #scrubber::-webkit-slider-runnable-track {
   width: 100%;
@@ -44,7 +113,7 @@ margin-bottom: 0.5em;
     width: 25%;
     height: 100%;
     top:0;
-    left: -25%;
+    left: -100%;
     transition: all 0.5s;
 }
 #trackList{
@@ -109,3 +178,130 @@ opacity: 50%;
     gap: 1em;
     align-items: center;
 }
+@media only screen and (min-width: 992px){
+.navbar{
+        position:sticky;
+        top: 2vh;
+        margin: 0 auto; 
+        max-width: 80vw;
+        font-family: 'metropolis';
+        background-color: #dbdbdb;
+        padding: 3.5vh 3.5vw;
+        border-radius: 10px;
+        
+        ul{
+            position: relative;
+            justify-content: center;
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            width: 100%; 
+            display: flex;
+            li{
+                flex-grow: 1;
+                color: black;
+                font-size: large;
+                text-align: center;
+            }
+            a{
+                color: black;
+                text-decoration: none;
+                transition: color 0.15s;
+                font-size: large;
+            }
+            a:hover{
+                color: #636364;
+            }
+        }
+    }
+}
+ @media only screen and (max-width: 750px){
+    .sideMenu{
+        width: 100%;
+        margin-top: 10vh;
+    }
+    h1{
+        font-family:'BigJohn' ,sans-serif;
+        font-weight: normal;
+        font-size: 8vw;
+        text-align: center;
+  
+    }
+      #BlogHead{
+        margin-left: 0;
+    }
+     .heading{
+        font-family:'BigJohn' ,sans-serif;
+        font-weight: normal;
+        font-size: 8vw;
+        margin:auto;
+    }
+    .bodyText{
+        font-family: 'Metropolis';
+        font-weight: normal;
+        font-size: 3.5vw;
+       line-height: 1.2rem;
+    }
+     .navbar{
+        
+        position:fixed;
+        margin: 0 auto; 
+        width: 100%;
+        top: 0;
+        z-index: 100;
+        font-family: 'metropolis';
+        background-color: #dbdbdb;
+        padding: 3vh 0;
+        transition: top 0.5s;
+        .burgerButton{
+            font-size: 5vw;
+            color: black;
+           display: block;
+           padding: 1vw 3vw;
+          
+        }
+        #navCheck:checked ~ul{
+            opacity: 100%;
+            left: 0;
+        }
+     
+        
+        
+    }
+    
+        #menu{
+         
+        position: fixed;
+        z-index: 99;
+        opacity: 0;
+        left: -120%;
+        background-color: #141414cb;
+        backdrop-filter: blur(12px);
+        list-style-type: none;
+        width: 100%;
+        height: 100vh;
+        transition: all 0.25s;
+
+        li{
+            color: white;
+            font-size: large;
+            padding-top: 7vh;
+        }
+        a{
+            
+            color: white;
+            text-decoration: none;
+            transition: color 0.15s;
+            font-size: 5vw;
+        }
+        a:hover{
+            
+            color: #636364;
+            
+        }
+        
+        
+        }
+        
+    
+    }
