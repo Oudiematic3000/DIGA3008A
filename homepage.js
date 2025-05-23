@@ -16,7 +16,7 @@ gainBass = audioContext.createGain();
 gainMelody = audioContext.createGain();
 let melodySource;
 let bassSource;
-
+var audioIsSet=false;
 const isInternalReferrer = document.referrer.includes(window.location.hostname);
 
 const introduction = document.querySelector('.introduction');
@@ -28,12 +28,13 @@ var mobile=window.matchMedia("(max-width: 750px)")
 
 loadButton.addEventListener('click',async ()=>{
   const audioReady= await audioSetup();
-  if(audioReady){
+  if(audioReady && !audioIsSet){
   loadScreen.style.opacity=0;
   loadScreen.style.zIndex=-30;
 
   slider.style.opacity='100%';
   bitb.style.opacity='100%';
+  audioIsSet=true;
   }
 }, { once: true });
 
@@ -66,8 +67,6 @@ let hasSlid=false;
 //Slider Audio
 
 async function audioSetup() {
-
-
 
   gainBass.gain.value = 0;
   if (!isInternalReferrer) gainMelody.gain.value = 1;
@@ -141,6 +140,10 @@ muteButton.addEventListener('click', ()=>{
 if(!muted){ 
  mute();
 }else{ 
+  if(!audioIsSet){
+    audioSetup();
+    audioIsSet=true;
+  }
   gainBass.gain.value=lastGain;
   gainMelody.gain.value=1;
   muted=false;
