@@ -176,6 +176,10 @@ let imageArray=[
 
 
 ];
+imageArray.forEach(imgData => {
+    const preloadImg = new Image();
+    preloadImg.src = imgData.path;
+});
 const carouselImages = document.querySelector('.carouselImages');
 const img=carouselImages.querySelector('img');
 const nextButton = document.querySelector('.next');
