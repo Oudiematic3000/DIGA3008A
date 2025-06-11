@@ -5,7 +5,7 @@ const navbar=document.querySelector('.navbar');
 const slider = document.getElementById('fader');
 const canvas = document.getElementById('visualizerCanvas');
 const canvasCtx = canvas.getContext('2d');
-const smoothingFactor=0.05;
+const smoothingFactor=0.025;
 let animationFrameId;
 slider.value=1;
 slider.style.opacity=0;
@@ -55,7 +55,7 @@ handleResize();
 if(!isInternalReferrer){
 window.scrollTo(0, 0);
 document.body.style.overflow='hidden';
-if(mobile===true)navbar.style.top='-100%';
+if(mobile.matches)navbar.style.top='-100%';
 }else{
   loadScreen.style.opacity=0;
   loadScreen.style.zIndex=-30;
@@ -115,7 +115,7 @@ async function audioSetup() {
 //Slider Event
 slider.addEventListener('input', (e)=>{
 
-        if(mobile===true){
+        if(mobile.matches){
           e.preventDefault();
         }
         const value = parseFloat(slider.value);
@@ -124,7 +124,8 @@ slider.addEventListener('input', (e)=>{
         introduction.style.opacity=1-value;
         canvas.style.bottom=-(value*100)+'%'
         canvas.style.opacity=1-(value);
-        if(mobile===true){
+        if(mobile.matches){
+          console.log("grrr");
           introduction.style.bottom=(1-value)*45+'vh';
         }else{
           introduction.style.bottom=(1-value)*35+'vh';
@@ -135,7 +136,7 @@ slider.addEventListener('input', (e)=>{
 
         if(!hasSlid && value===0){
           document.body.style.overflow='auto';
-          if(mobile===true){
+          if(mobile.matches){
           navbar.style.top=0;
        
           }
@@ -206,9 +207,16 @@ function applyEMASmoothing() {
 
             const bufferLength = analyser.frequencyBinCount;
             const gradient = canvasCtx.createLinearGradient(0, 0, 0, canvas.height);
-            gradient.addColorStop(0, 'rgba(0, 0, 0, 0)');
-            gradient.addColorStop(0.5, 'rgba(90, 90, 90, 0.39)');
+            if(mobile.matches){
+              gradient.addColorStop(0, 'rgba(0, 0, 0, 0)');
+               gradient.addColorStop(0.3, 'rgba(90, 90, 90, 0.39)');
             gradient.addColorStop(1, 'rgba(160, 160, 160, 0.92)');
+            }else{
+            gradient.addColorStop(0, 'rgba(0, 0, 0, 0)');
+            gradient.addColorStop(0.75, 'rgba(90, 90, 90, 0.39)');
+            gradient.addColorStop(1, 'rgba(160, 160, 160, 0.92)');
+            }
+           
 
             canvasCtx.fillStyle = gradient;
             canvasCtx.strokeStyle = 'rgba(238, 242, 255, 0)';
@@ -237,21 +245,18 @@ function applyEMASmoothing() {
             canvasCtx.stroke();
         }
 
-         function handleResize() {
+          function handleResize() {
             const dpr = window.devicePixelRatio || 1;
-            
             const rect = canvas.getBoundingClientRect();
             
             canvas.width = rect.width * dpr;
             canvas.height = rect.height * dpr;
             
+            // >> FIX: Reset the transform matrix before applying the new scale
+            // This prevents the cumulative scaling issue.
+            canvasCtx.setTransform(1, 0, 0, 1, 0, 0); 
             canvasCtx.scale(dpr, dpr);
-            
- 
-            if (animationFrameId) {
-        
-                canvasCtx.clearRect(0, 0, canvas.width, canvas.height);
-            }
         }
+        
          window.addEventListener('resize', handleResize);
         
