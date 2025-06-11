@@ -140,6 +140,14 @@ background: url("../images/FaderThumb.png") no-repeat center;
 #loadImage{
         width: 25vw;
     }
+#visualizerCanvas{
+    width: 100%;
+    position: absolute;
+    bottom:0;
+    left: 0;
+    z-index: -6;
+
+}
 #BlogHead{
         margin-top: 15vh;
     }

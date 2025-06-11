@@ -3,6 +3,10 @@ const loadButton=document.getElementById("loadButton");
 const loadScreen=document.querySelector('.loadScreen');
 const navbar=document.querySelector('.navbar');
 const slider = document.getElementById('fader');
+const canvas = document.getElementById('visualizerCanvas');
+const canvasCtx = canvas.getContext('2d');
+const smoothingFactor=0.05;
+let animationFrameId;
 slider.value=1;
 slider.style.opacity=0;
 const bitb = document.querySelector('.bringInTheBass');
@@ -12,6 +16,11 @@ let gainBass, gainMelody;
 let lastGain=0;
 var muted = false; 
 const audioContext = new AudioContext();
+   analyser = audioContext.createAnalyser();
+   analyser.fftSize = 32;
+    const bufferLength = analyser.frequencyBinCount;
+            dataArray = new Uint8Array(bufferLength);
+            smoothedDataArray = new Float32Array(bufferLength);
 gainBass = audioContext.createGain();
 gainMelody = audioContext.createGain();
 let melodySource;
@@ -26,12 +35,13 @@ const muteButton=document.getElementById("muteButton");
 
 var mobile=window.matchMedia("(max-width: 750px)")
 
+
 loadButton.addEventListener('click',async ()=>{
   const audioReady= await audioSetup();
   if(audioReady && !audioIsSet){
   loadScreen.style.opacity=0;
   loadScreen.style.zIndex=-30;
-
+    draw();
   slider.style.opacity='100%';
   bitb.style.opacity='100%';
   audioIsSet=true;
@@ -40,12 +50,12 @@ loadButton.addEventListener('click',async ()=>{
 
 //prevent scroll
  
-
+handleResize(); 
 
 if(!isInternalReferrer){
 window.scrollTo(0, 0);
 document.body.style.overflow='hidden';
-if(mobile)navbar.style.top='-100%';
+if(mobile===true)navbar.style.top='-100%';
 }else{
   loadScreen.style.opacity=0;
   loadScreen.style.zIndex=-30;
@@ -55,6 +65,7 @@ if(mobile)navbar.style.top='-100%';
   gainBass.gain.value=1;
   lastGain=1;
   mute();
+  draw();
 }
 let hasSlid=false;
 
@@ -79,6 +90,7 @@ async function audioSetup() {
     .then(r => r.arrayBuffer())
     .then(d => audioContext.decodeAudioData(d));
 
+    
 
   melodySource = audioContext.createBufferSource();
   melodySource.buffer = melodyBuffer;
@@ -88,7 +100,7 @@ async function audioSetup() {
   bassSource = audioContext.createBufferSource();
   bassSource.buffer = bassBuffer;
   bassSource.loop = true;
-  bassSource.connect(gainBass).connect(audioContext.destination);
+  bassSource.connect(gainBass).connect(analyser).connect(audioContext.destination);
 
   const startTime = audioContext.currentTime + 0.1;
   melodySource.start(startTime);
@@ -103,14 +115,16 @@ async function audioSetup() {
 //Slider Event
 slider.addEventListener('input', (e)=>{
 
-        if(mobile){
+        if(mobile===true){
           e.preventDefault();
         }
         const value = parseFloat(slider.value);
         bitb.style.transition="none";
         bitb.style.opacity=value;
         introduction.style.opacity=1-value;
-        if(mobile){
+        canvas.style.bottom=-(value*100)+'%'
+        canvas.style.opacity=1-(value);
+        if(mobile===true){
           introduction.style.bottom=(1-value)*45+'vh';
         }else{
           introduction.style.bottom=(1-value)*35+'vh';
@@ -121,8 +135,10 @@ slider.addEventListener('input', (e)=>{
 
         if(!hasSlid && value===0){
           document.body.style.overflow='auto';
-          if(mobile)
+          if(mobile===true){
           navbar.style.top=0;
+       
+          }
         hasSlid=true;
         }
 
@@ -169,3 +185,73 @@ document.querySelectorAll('.navLink').forEach(link => {
     }
   });
 });
+
+
+//visualiser stuff
+
+function applyEMASmoothing() {
+            if (!dataArray) return;
+            for (let i = 0; i < dataArray.length; i++) {
+                smoothedDataArray[i] = (smoothingFactor * dataArray[i]) + ((1 - smoothingFactor) * smoothedDataArray[i]);
+            }
+        }
+
+        function draw() {
+   
+            animationFrameId = requestAnimationFrame(draw);
+            analyser.getByteFrequencyData(dataArray);
+            applyEMASmoothing();
+            
+            canvasCtx.clearRect(0, 0, canvas.width, canvas.height);
+
+            const bufferLength = analyser.frequencyBinCount;
+            const gradient = canvasCtx.createLinearGradient(0, 0, 0, canvas.height);
+            gradient.addColorStop(0, 'rgba(0, 0, 0, 0)');
+            gradient.addColorStop(0.5, 'rgba(90, 90, 90, 0.39)');
+            gradient.addColorStop(1, 'rgba(160, 160, 160, 0.92)');
+
+            canvasCtx.fillStyle = gradient;
+            canvasCtx.strokeStyle = 'rgba(238, 242, 255, 0)';
+             const dpr = window.devicePixelRatio || 1;
+            canvasCtx.lineWidth = 2 * dpr;
+
+            canvasCtx.beginPath();
+            const sliceWidth = canvas.width / (bufferLength - 1);
+            let y_first = canvas.clientHeight - (smoothedDataArray[0] / 255.0 * canvas.clientHeight);
+            canvasCtx.moveTo(0, y_first);
+
+        for (let i = 0; i < bufferLength - 1; i++) {
+                const x1 = i * sliceWidth;
+                const y1 = canvas.clientHeight - (smoothedDataArray[i] / 255.0 * canvas.clientHeight);
+                const x2 = (i + 1) * sliceWidth;
+                const y2 = canvas.clientHeight - (smoothedDataArray[i + 1] / 255.0 * canvas.clientHeight);
+                const cx = (x1 + x2) / 2;
+                canvasCtx.bezierCurveTo(cx, y1, cx, y2, x2, y2);
+            }
+
+            canvasCtx.lineTo(canvas.clientWidth, canvas.clientHeight);
+            canvasCtx.lineTo(0, canvas.clientHeight);
+            canvasCtx.closePath();
+            
+            canvasCtx.fill();
+            canvasCtx.stroke();
+        }
+
+         function handleResize() {
+            const dpr = window.devicePixelRatio || 1;
+            
+            const rect = canvas.getBoundingClientRect();
+            
+            canvas.width = rect.width * dpr;
+            canvas.height = rect.height * dpr;
+            
+            canvasCtx.scale(dpr, dpr);
+            
+ 
+            if (animationFrameId) {
+        
+                canvasCtx.clearRect(0, 0, canvas.width, canvas.height);
+            }
+        }
+         window.addEventListener('resize', handleResize);
+        
