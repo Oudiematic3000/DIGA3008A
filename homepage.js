@@ -210,11 +210,11 @@ function applyEMASmoothing() {
             if(mobile.matches){
               gradient.addColorStop(0, 'rgba(0, 0, 0, 0)');
                gradient.addColorStop(0.3, 'rgba(90, 90, 90, 0.39)');
-            gradient.addColorStop(1, 'rgba(160, 160, 160, 0.92)');
+            gradient.addColorStop(1, 'rgba(70, 70, 70, 0.92)');
             }else{
             gradient.addColorStop(0, 'rgba(0, 0, 0, 0)');
             gradient.addColorStop(0.75, 'rgba(90, 90, 90, 0.39)');
-            gradient.addColorStop(1, 'rgba(160, 160, 160, 0.92)');
+            gradient.addColorStop(1, 'rgba(70, 70, 70, 0.92)');
             }
            
 

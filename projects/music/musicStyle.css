@@ -58,10 +58,16 @@ footer{
         font-size: 4.5vw;
         margin-left: 8.5vw;
     }
+    h2{
+        font-family:'BigJohn' ,sans-serif;
+        font-weight: normal;
+        font-size: 4vw;
+        margin-left: 8.5vw;
+    }
 
     
     #BlogHead{
-        margin-top: 15vh;
+        margin-top: 5vh;
     }
 #navCheck{
     display: none;
@@ -178,6 +184,17 @@ opacity: 50%;
     gap: 1em;
     align-items: center;
 }
+#canvasContainer{
+    margin-top: 100vh;
+}
+#visualizerCanvas{
+    width: 100%;
+    position: fixed;
+    bottom:9vh;
+    left: 0;
+    z-index: -6;
+
+}
 .carousel{
     margin-top: 10vh;
     margin-bottom: 10vh;
@@ -190,33 +207,32 @@ opacity: 50%;
  align-items: center;
  justify-content: center;
     img{
-        max-height: 80vh;
+        max-height: 75vh;
         max-width: 90vw;
     }
  
 }
 .prev{
-    position: absolute;
+    position: fixed;
     left: 2em;
-    bottom: 5%;
+    bottom: 50%;
     border-radius: 2em;
     border-style: none;
     width: 1.5em;
     height: 1.5em;
 }
 .next{
-     position: absolute;
+     position: fixed;
     right: 2em;
-    bottom: 5%;
+    bottom: 50%;
        border-radius: 2em;
     border-style: none;
     width: 1.5em;
     height: 1.5em;
     
 }
-#sorryMessage{
-    margin-left: 0.5em;
-    margin-top: 0.5em;
+.APIDescription{
+    margin-bottom: 20vh;
     
 }
 @media only screen and (min-width: 992px){
@@ -261,14 +277,14 @@ opacity: 50%;
         line-height: 1.7rem;
     }
         .prev{
-    position: absolute;
+    position: fixed;
     left: 2em;
     bottom: 30%;
     width: 2.5em;
     height: 2.5em;
 }
 .next{
-     position: absolute;
+     position: fixed;
     right: 2em;
     bottom: 30%;
     width: 2.5em;
@@ -372,16 +388,16 @@ opacity: 50%;
 
  @media only screen and (max-width: 750px){
     .prev{
-    position: absolute;
+    position: fixed;
     left: 2em;
-    bottom: 30%;
+    bottom: 50%;
     width: 3em;
     height: 3em;
 }
 .next{
-     position: absolute;
+     position: fixed;
     right: 2em;
-    bottom: 30%;
+    bottom: 50%;
     width: 3em;
     height: 3em;
 }
