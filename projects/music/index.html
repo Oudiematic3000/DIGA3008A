@@ -23,7 +23,7 @@
     <header>
       <h1 id="BlogHead">Music</h1>
     </header>
-    <nav class="navbar">
+    <nav class="navbar fade">
       <input type="checkbox" id="navCheck" />
       <label for="navCheck" class="burgerButton">
         <i class="fa-solid fa-bars"></i>
@@ -39,6 +39,7 @@
       </ul>
     </nav>
     <section class="bodyText">
+      <img src="images/Stars.png" class="stars">
       <div id="canvasContainer">
       <canvas id="visualizerCanvas"></canvas>
       </div>
@@ -51,14 +52,17 @@
   <button class="next"><i class="fa-solid fa-arrow-right"></i></button>
 </div>
 <h2>My Album recommendation</h2>
-<div class="flexColumn">
-  <p class="APITitle">Loading Album</p>
+<div class="APIContainer fade">
 <img class="APIImage">
+<div class="APIText">
 <p class="APIArtist">Loading Artist</p>
+  <p class="APITitle">Loading Album</p>
 <p class="APIGenres">Loading Genres</p>
-<p class="APIDescription bodyText">Album Description</p>
-<button type="button" class="reroll">Show me another</button>
+<p class="APIDescription">Album Description</p>
 </div>
+</div>
+<div class="flexColumn"><button type="button" class="reroll">Show me another</button></div>
+
       <div class="sideMenu">
         <ul id="trackList">
         
@@ -94,7 +98,7 @@
         </div>
       </div>
     </section>
-
+  <button type="button" class="toTopButton"><i class="fa-solid fa-arrow-up"></i></button>
     <footer>
       <p>Ariel Oudmayer 2025.</p>
       <p id="FooterRight">Versatile. Adaptable. Supportive. Reliable.</p>

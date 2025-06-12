@@ -345,7 +345,9 @@ async function getMyAlbumRecommendation() {
     const myUsername = 'Oudiematic3000';
     const period = '12months';
     const limit = 175;
-
+    const container=document.querySelector('.APIContainer');
+    container.classList.add('out');
+        await new Promise(resolve => setTimeout(resolve, 400));
     const apiUrl = `https://ws.audioscrobbler.com/2.0/?method=user.gettopalbums&user=${myUsername}&api_key=${apiKey}&period=${period}&limit=${limit}&format=json`;
 
     try {
@@ -374,10 +376,11 @@ async function getMyAlbumRecommendation() {
 
         const albumArtistElement = document.querySelector('.APIArtist');
         albumArtistElement.innerHTML = recommendedAlbum.artist.name;
+        
         genreElement.innerHTML=genreText;
         descriptionElement.innerHTML=summaryText;
-   
-
+   container.classList.remove('out');
+         
     } catch (error) {
         console.error("Error fetching data from Last.fm:", error);
     }
@@ -409,7 +412,6 @@ async function getWikipediaIntro(title, artist) {
         `${title} (${artist} album)`
     ];
 
-    // Normalize the title
     const normalizedTitle = await getNormalizedWikipediaTitle(title);
 
     const normalizedVariations = normalizedTitle
@@ -446,7 +448,6 @@ async function getWikipediaIntro(title, artist) {
 async function getGenresFromWikipedia(title, artist = "") {
     title = title.replace(/\s*\([^)]*\)\s*$/, '').trim();
 
-    // Normalize title for second group of fallbacks
     const normalizedTitle = await getNormalizedWikipediaTitle(title);
 
     const baseTitles = [title];
@@ -491,7 +492,7 @@ async function getGenresFromWikipedia(title, artist = "") {
 
             const genres = [...genreCell.querySelectorAll("a")]
                 .map(link => link.textContent.trim())
-                .map(text => text.replace(/\[\d+\]/g, "")) // remove [1], [2], etc.
+                .map(text => text.replace(/\[\d+\]/g, ""))
                 .filter(Boolean);
 
             if (genres.length > 0) {
@@ -502,7 +503,7 @@ async function getGenresFromWikipedia(title, artist = "") {
 
         } catch (error) {
             console.warn(`Failed to get genres for "${queryTitle}": ${error.message}`);
-            // Try next variation
+     
         }
     }
 
@@ -544,4 +545,30 @@ getMyAlbumRecommendation();
 const toTopButton=document.querySelector('.toTopButton');
 toTopButton.addEventListener('click',()=>{
   window.scrollTo(0, 0);
-})
+});
+
+let scrollTimeout;
+let scrollDelay = 1500; 
+const navbar=document.querySelector('.navbar');
+if(mobile.matches){
+window.addEventListener('scroll', () => {
+
+  clearTimeout(scrollTimeout);
+
+  navbar.classList.remove('out');
+  scrollTimeout = setTimeout(() => {
+    navbar.classList.add('out');
+  
+    onScrollStop();
+  }, scrollDelay);
+});
+
+function onScrollStop() {
+ navbar.classList.add('out');
+}
+crollTimeout = setTimeout(() => {
+    navbar.classList.add('out');
+    
+    onScrollStop();
+  }, scrollDelay);
+}

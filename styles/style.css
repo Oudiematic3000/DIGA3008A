@@ -263,7 +263,20 @@ h1{
     
 
 }
-
+     .techStack{
+                display: block;
+               
+                padding: 2vh 2vw;
+            justify-content: center;  
+            background-color: #141414;
+            margin-inline: 5vw;
+            align-items: center;
+            li{
+                 font-family: 'Metropolis';
+        font-weight: normal;
+        margin: 2vh 2vw;
+            }
+            }
 #Blog{
     #BlogHeadingContainer{
         display: flex;
@@ -543,7 +556,20 @@ h1{
         
     
     }
-    
+         .techStack{
+                display: block;
+               
+                padding: 2vh 2vw;
+            justify-content: center;  
+            background-color: #141414;
+            margin-inline: 5vw;
+            align-items: center;
+            li{
+                 font-family: 'Metropolis';
+        font-weight: normal;
+        margin: 2vh 2vw;
+            }
+            }
     #Blog{
         #BlogHeadingContainer{
             display: flex;
@@ -815,8 +841,7 @@ h1{
         font-size: 5vw;
         line-height: 5vh;
         margin: 2vh 2vw;
-
-        
+           
         img{
             width: 50vw;
             transition: all 0.15s;
@@ -841,7 +866,21 @@ h1{
         
     
     }
-    
+     .techStack{
+                display: block;
+               
+                padding: 2vh 2vw;
+            justify-content: center;  
+            background-color: #141414;
+            margin-inline: 5vw;
+            align-items: center;
+            li{
+                 font-family: 'Metropolis';
+        font-weight: normal;
+        margin: 2vh 2vw;
+            }
+            }
+        
     #Blog{
         #BlogHeadingContainer{
             display: flex;
