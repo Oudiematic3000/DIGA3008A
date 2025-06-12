@@ -374,8 +374,18 @@ async function getMyAlbumRecommendation() {
         const albums = data.topalbums.album;
         const randomIndex = Math.floor(Math.random() * albums.length);
         const recommendedAlbum = albums[randomIndex];
-
-        const albumArtElement = document.querySelector('.APIImage');
+        let summaryText;
+        let genreText;
+        const descriptionElement = document.querySelector('.APIDescription');
+         const genreElement = document.querySelector('.APIGenres');
+         await  getGenresFromWikipedia(recommendedAlbum.name, recommendedAlbum.artist.name).then(genres=>{
+             genreText = genres;
+        });
+       await getAlbumSummary(recommendedAlbum.artist.name,recommendedAlbum.name).then(summary=>{
+            summaryText=summary;
+        });
+      
+         const albumArtElement = document.querySelector('.APIImage');
         albumArtElement.src = recommendedAlbum.image[3]['#text'];
 
         const albumTitleElement = document.querySelector('.APITitle');
@@ -383,20 +393,9 @@ async function getMyAlbumRecommendation() {
 
         const albumArtistElement = document.querySelector('.APIArtist');
         albumArtistElement.innerHTML = recommendedAlbum.artist.name;
-
-        const descriptionElement = document.querySelector('.APIDescription');
-         const genreElement = document.querySelector('.APIGenres');
-        getAlbumSummary(recommendedAlbum.artist.name,recommendedAlbum.name).then(summary=>{
-            descriptionElement.innerHTML=summary;
-        });
-        getGenresFromWikipedia(recommendedAlbum.name, recommendedAlbum.artist.name).then(genres=>{
-             genreElement.innerHTML = genres;
-        });
-
-        //  getAlbumGenres(recommendedAlbum.artist.name, recommendedAlbum.name)
-        //      .then(description => {
-        //         genreElement.innerHTML = description;
-        //    });
+        genreElement.innerHTML=genreText;
+        descriptionElement.innerHTML=summaryText;
+   
 
     } catch (error) {
         console.error("Error fetching data from Last.fm:", error);
@@ -404,8 +403,7 @@ async function getMyAlbumRecommendation() {
 }
 async function getAlbumSummary(artist, album) {
     album=album.replace(/\s*\([^)]*\)\s*$/, '').trim();
-    //albumName=albumName.replace(/\s*\[[^)]*\]\s*$/, '').trim();
-    const apiKey = 'a8836b7fe2fa7b1f83347b5537067d7d'; // replace with your Last.fm key
+    const apiKey = 'a8836b7fe2fa7b1f83347b5537067d7d'; 
     const url = `https://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=${apiKey}&artist=${encodeURIComponent(artist)}&album=${encodeURIComponent(album)}&format=json`;
 
     try {
@@ -413,8 +411,8 @@ async function getAlbumSummary(artist, album) {
         const data = await response.json();
 
         if (data.album && data.album.wiki && data.album.wiki.summary) {
-            // Remove trailing "Read more" links if present
-            return data.album.wiki.summary.replace(/<a.*<\/a>/, '').trim();
+            let output=data.album.wiki.summary.replace(/<a.*<\/a>/, '').trim();
+            return output.trim().replace(/[\s.]+$/, "") + "…";
         } else {
             return await getWikipediaIntro(album, artist);
         }
@@ -424,13 +422,26 @@ async function getAlbumSummary(artist, album) {
     }
 }
 async function getWikipediaIntro(title, artist) {
-    const variations = [
+    const originalVariations = [
         title,
         `${title} (album)`,
         `${title} (${artist} album)`
     ];
 
-    for (const variation of variations) {
+    // Normalize the title
+    const normalizedTitle = await getNormalizedWikipediaTitle(title);
+
+    const normalizedVariations = normalizedTitle
+        ? [
+            normalizedTitle,
+            `${normalizedTitle} (album)`,
+            `${normalizedTitle} (${artist} album)`
+        ]
+        : [];
+
+    const allVariations = [...originalVariations, ...normalizedVariations];
+
+    for (const variation of allVariations) {
         const wikiTitle = encodeURIComponent(variation);
         const url = `https://en.wikipedia.org/api/rest_v1/page/summary/${wikiTitle}`;
 
@@ -440,7 +451,8 @@ async function getWikipediaIntro(title, artist) {
 
             const data = await res.json();
             if (data.extract) {
-                return data.extract;
+                return data.extract.trim().replace(/[\s.]+$/, "") + "…";
+                
             }
         } catch (e) {
             console.warn(`Failed to fetch Wikipedia summary for "${variation}"`);
@@ -450,60 +462,94 @@ async function getWikipediaIntro(title, artist) {
     return "";
 }
 
-async function getGenresFromWikipedia(title, artist = "", fallbackLevel = 0) {
-    title=title.replace(/\s*\([^)]*\)\s*$/, '').trim();
+async function getGenresFromWikipedia(title, artist = "") {
+    title = title.replace(/\s*\([^)]*\)\s*$/, '').trim();
+
+    // Normalize title for second group of fallbacks
+    const normalizedTitle = await getNormalizedWikipediaTitle(title);
+
+    const baseTitles = [title];
+    if (normalizedTitle && normalizedTitle !== title) {
+        baseTitles.push(normalizedTitle);
+    }
+
     const suffixes = [
-        "",                    // original
-        " (album)",            // title (album)
-        ` (${artist} album)`   // title (Artist album)
+        "",                   
+        " (album)",           
+        ` (${artist} album)`   
     ];
 
-    const queryTitle = `${title}${suffixes[fallbackLevel]}`;
-    const encodedTitle = encodeURIComponent(queryTitle);
+    const variations = baseTitles.flatMap(base =>
+        suffixes.map(suffix => `${base}${suffix}`)
+    );
+
+    for (const queryTitle of variations) {
+        const encodedTitle = encodeURIComponent(queryTitle);
+        const url = `https://en.wikipedia.org/w/api.php?action=parse&page=${encodedTitle}&format=json&origin=*`;
+
+        try {
+            const response = await fetch(url);
+            const data = await response.json();
+
+            const html = data.parse?.text["*"];
+            if (!html) throw new Error("No page content.");
+
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, "text/html");
+
+            const infobox = doc.querySelector(".infobox");
+            if (!infobox) throw new Error("No infobox.");
+
+            const genreRow = [...infobox.querySelectorAll("tr")].find(tr =>
+                tr.querySelector('th a[title="Music genre"]')
+            );
+            if (!genreRow) throw new Error("No genre row.");
+
+            const genreCell = genreRow.querySelector("td.infobox-data.category.hlist");
+            if (!genreCell) throw new Error("No genre cell.");
+
+            const genres = [...genreCell.querySelectorAll("a")]
+                .map(link => link.textContent.trim())
+                .map(text => text.replace(/\[\d+\]/g, "")) // remove [1], [2], etc.
+                .filter(Boolean);
+
+            if (genres.length > 0) {
+                return genres.join(", ");
+            } else {
+                throw new Error("Empty genre list.");
+            }
+
+        } catch (error) {
+            console.warn(`Failed to get genres for "${queryTitle}": ${error.message}`);
+            // Try next variation
+        }
+    }
+
+    return [""];
+}
+
+async function getNormalizedWikipediaTitle(title) {
+    const url = `https://en.wikipedia.org/w/api.php?action=query&titles=${encodeURIComponent(title)}&redirects&format=json&origin=*`;
 
     try {
-        const url = `https://en.wikipedia.org/w/api.php?action=parse&page=${encodedTitle}&format=json&origin=*`;
-        const response = await fetch(url);
-        const data = await response.json();
+        const res = await fetch(url);
+        if (!res.ok) throw new Error("Failed to query Wikipedia");
 
-        const html = data.parse?.text["*"];
-        if (!html) throw new Error("No page content.");
+        const data = await res.json();
+        const normalized = data.query?.normalized?.[0]?.to || title;
+        const redirects = data.query?.redirects?.[0]?.to;
 
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(html, "text/html");
+        const finalTitle = redirects || normalized;
 
-        const infobox = doc.querySelector(".infobox");
-        if (!infobox) throw new Error("No infobox.");
-
-        // Look for the "Genre" row with a link titled "Music genre"
-        const genreRow = [...infobox.querySelectorAll("tr")].find(tr =>
-            tr.querySelector('th a[title="Music genre"]')
+        const pageExists = Object.keys(data.query.pages).some(
+            key => !data.query.pages[key].missing
         );
-        if (!genreRow) throw new Error("No genre row.");
 
-        const genreCell = genreRow.querySelector("td.infobox-data.category.hlist");
-        if (!genreCell) throw new Error("No genre cell.");
+        return pageExists ? finalTitle : null;
 
-const genres = [...genreCell.querySelectorAll("a")]
-    .map(link => link.textContent.trim())
-    .map(text => text.replace(/\[\d+\]/g, "")) // Remove any [1], [2] if present
-    .filter(Boolean);
-
-        if (genres.length > 0) {
-            return genres.join(", ");
-        } else {
-            throw new Error("Empty genre list.");
-        }
-
-    } catch (error) {
-        console.warn(`Fallback ${fallbackLevel} failed for "${queryTitle}": ${error.message}`);
-
-        // Try next fallback if any remain
-        if (fallbackLevel < suffixes.length - 1) {
-            return getGenresFromWikipedia(title, artist, fallbackLevel + 1);
-        }
-
-        return [""];
+    } catch (e) {
+        console.warn(`Normalization failed for "${title}": ${e.message}`);
+        return null;
     }
 }
 
@@ -513,3 +559,8 @@ rerollButton.addEventListener('click',()=>{
     getMyAlbumRecommendation();
 })
 getMyAlbumRecommendation();
+
+const toTopButton=document.querySelector('.toTopButton');
+toTopButton.addEventListener('click',()=>{
+  window.scrollTo(0, 0);
+})

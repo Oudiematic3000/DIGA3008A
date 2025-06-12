@@ -33,7 +33,19 @@ footer{
   .burgerButton{
    display: none;
 }
-
+.toTopButton{
+    position: fixed;
+    right: 1vw;
+    bottom: 12vh;
+    width: 7vh;
+    height: 7vh;
+    font-size: 1.5em;
+    border-radius: 7vh;
+    border-style:  none;
+}
+.toTopButton:hover{
+    cursor: pointer;
+}
 .heading{
     font-family:'BigJohn' ,sans-serif;
     font-weight: normal;
@@ -77,6 +89,9 @@ width: 100%;
 height: 0.4em;
 margin-bottom: 0.5em;
 }
+#scrubber:hover{
+    cursor: pointer;
+}
 #scrubber::-webkit-slider-runnable-track {
   width: 100%;
   height: 1em;
@@ -105,11 +120,26 @@ margin-bottom: 0.5em;
   border-radius: 10em;
 
 }
+#playPauseButton:hover{
+    cursor: pointer;
+}
+#backwardsButton:hover{
+       cursor: pointer;
+}
+#forwardsButton:hover{
+       cursor: pointer;
+}
 #playlistButton{
     margin-left: 2em;
 }
+#playListButton:hover{
+    cursor: pointer;
+}
 #trackTitle{
     font-size: 0.75em;
+}
+#trackTitle:hover{
+    cursor: pointer;
 }
 .sideMenu{
     
@@ -130,6 +160,9 @@ margin-bottom: 0.5em;
     justify-content: center;
     align-items: center;
 }
+#trackList:hover{
+    cursor: pointer;
+}
 .menuTrackItem{
     width: 90%;
   
@@ -142,10 +175,12 @@ margin-bottom: 0.5em;
 }
 .menuTrackItem:hover{
 opacity: 50%;
+cursor: pointer;
 }
 #trackSelect:hover{
     transition: all 0.15s;
 opacity: 50%;
+cursor: pointer;
 }
 .menuItemSongDuration{
     display: flex;
@@ -231,6 +266,12 @@ opacity: 50%;
     height: 1.5em;
     
 }
+.next:hover{
+       cursor: pointer;
+}
+.prev:hover{
+       cursor: pointer;
+}
 .APIDescription{
     margin-bottom: 20vh;
     margin-left: 8vw;
@@ -238,6 +279,11 @@ opacity: 50%;
 }
 .reroll{
     margin-bottom: 20vh;
+    padding: 1em;
+    border-radius: 0.55em;
+}
+.reroll:hover{
+       cursor: pointer;
 }
 @media only screen and (min-width: 992px){
 .navbar{

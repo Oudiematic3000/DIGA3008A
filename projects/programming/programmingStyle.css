@@ -133,6 +133,9 @@ footer{
     border-radius: 7vh;
     border-style:  none;
 }
+.toTopButton:hover{
+    cursor: pointer;
+}
 @media only screen and (min-width: 992px){
 .navbar{
         position:sticky;
