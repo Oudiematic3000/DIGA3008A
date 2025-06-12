@@ -303,61 +303,42 @@ function applyEMASmoothing() {
         }
         
          window.addEventListener('resize', handleResize);
-       let fadeOutDistance = 3000; 
-       let fadeInStart = 500;  
-        let fadeInEnd = 800;   
+ function setButtonOpacity() {
+    const carouselRect = carouselImages.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
 
+    const visibleTop = Math.max(0, carouselRect.top);
+    const visibleBottom = Math.min(windowHeight, carouselRect.bottom);
+    const visibleHeight = Math.max(0, visibleBottom - visibleTop);
+    const totalHeight = carouselRect.height;
 
-        let fadeOutStart = 1700;
-        let fadeOutEnd = 1900;   
-        if(mobile.matches){
-         fadeOutDistance = 750; 
-        fadeInStart = 500;  
-        fadeInEnd = 750;    
+    const visibilityRatio = visibleHeight / totalHeight;
 
+    
+    let opacity = 0;
+    if (visibilityRatio >= 0.2 && visibilityRatio <= 1) {
+        opacity = Math.min(1, (visibilityRatio - 0.2) / 0.3); 
+    } else if (visibilityRatio > 0.5) {
+        opacity = 1;
+    } else if (visibilityRatio < 0.1) {
+        opacity = 0;
+    }
 
-         fadeOutStart = 800; 
-         fadeOutEnd = 950;  
-        }
+    prevButton.style.opacity = opacity;
+    nextButton.style.opacity = opacity;
 
-const fadeInDuration = fadeInEnd - fadeInStart;
-const fadeOutDuration = fadeOutEnd - fadeOutStart;
-function setButtonOpacity(){
-     const scrollPosition = window.scrollY;
-
+  
+    const scrollPosition = window.scrollY;
+    const fadeOutDistance = mobile.matches ? 750 : 3000;
     if (scrollPosition <= fadeOutDistance) {
-        const opacity = 1 - (scrollPosition / fadeOutDistance);
-        canvas.style.opacity = opacity;
+        canvas.style.opacity = 1 - (scrollPosition / fadeOutDistance);
     } else {
         canvas.style.opacity = 0;
     }
-
-  let opacity = 0; 
-
-    if (scrollPosition >= fadeInStart && scrollPosition <= fadeInEnd) {
-       
-        const progress = (scrollPosition - fadeInStart) / fadeInDuration;
-        opacity = progress;
-        
-    } else if (scrollPosition > fadeInEnd && scrollPosition < fadeOutStart) {
-       
-        opacity = 1;
-
-    } else if (scrollPosition >= fadeOutStart && scrollPosition <= fadeOutEnd) {
-        
-        const progress = (scrollPosition - fadeOutStart) / fadeOutDuration;
-        
-        opacity = 1 - progress;
-    }
-    
-    prevButton.style.opacity = Math.min(1, Math.max(0, opacity));
-    nextButton.style.opacity = Math.min(1, Math.max(0, opacity));
 }
-window.addEventListener('scroll', () => {
-   setButtonOpacity();
-});
+window.addEventListener('scroll', setButtonOpacity);
+window.addEventListener('resize', setButtonOpacity); 
 setButtonOpacity();
-
 
 async function getMyAlbumRecommendation() {
     const apiKey = 'a8836b7fe2fa7b1f83347b5537067d7d';
