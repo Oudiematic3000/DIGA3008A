@@ -370,22 +370,46 @@ async function getMyAlbumRecommendation() {
         albumArtistElement.innerHTML = recommendedAlbum.artist.name;
 
         const descriptionElement = document.querySelector('.APIDescription');
+         const genreElement = document.querySelector('.APIGenres');
+        getAlbumSummary(recommendedAlbum.artist.name,recommendedAlbum.name).then(summary=>{
+            descriptionElement.innerHTML=summary;
+        })
 
-        getAlbumDescription(recommendedAlbum.artist.name, recommendedAlbum.name)
-            .then(description => {
-                descriptionElement.innerHTML = description;
-            });
+         getAlbumGenres(recommendedAlbum.artist.name, recommendedAlbum.name)
+             .then(description => {
+                genreElement.innerHTML = description;
+           });
 
     } catch (error) {
         console.error("Error fetching data from Last.fm:", error);
     }
 }
+async function getAlbumSummary(artist, album) {
+    album=album.replace(/\s*\([^)]*\)\s*$/, '').trim();
+    const apiKey = 'a8836b7fe2fa7b1f83347b5537067d7d'; // replace with your Last.fm key
+    const url = `https://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=${apiKey}&artist=${encodeURIComponent(artist)}&album=${encodeURIComponent(album)}&format=json`;
 
-async function getAlbumDescription(artistName, albumName) {
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+
+        if (data.album && data.album.wiki && data.album.wiki.summary) {
+            // Remove trailing "Read more" links if present
+            return data.album.wiki.summary.replace(/<a.*<\/a>/, '').trim();
+        } else {
+            return "No summary found for this album.";
+        }
+    } catch (err) {
+        console.error("Error fetching album summary from Last.fm:", err);
+        return "Could not fetch album summary.";
+    }
+}
+
+async function getAlbumGenres(artistName, albumName) {
     const discogsKey = 'CvzkzBrUnUZdluvTQDGl'; 
     const discogsSecret = 'MbRYhybzioaGAjXWOwHcIPvOMWVHpAaZ'; 
 
-
+     albumName=albumName.replace(/\s*\([^)]*\)\s*$/, '').trim();
     const encodedArtist = encodeURIComponent(artistName);
     const encodedAlbum = encodeURIComponent(albumName);
 
@@ -398,7 +422,7 @@ async function getAlbumDescription(artistName, albumName) {
     try {
         let response = await fetch(searchUrl, { headers });
         let data = await response.json();
-
+        await delay(1000);
         const masterResult = data.results.find(r => r.master_id);
         if (!masterResult) {
             return "No master release found for this album on Discogs.";
@@ -421,6 +445,8 @@ async function getAlbumDescription(artistName, albumName) {
         return "Could not load genre information from Discogs.";
     }
 }
-
+function delay(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 getMyAlbumRecommendation();

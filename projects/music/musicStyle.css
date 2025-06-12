@@ -233,7 +233,8 @@ opacity: 50%;
 }
 .APIDescription{
     margin-bottom: 20vh;
-    
+    margin-left: 8vw;
+    margin-right: 8vw;
 }
 @media only screen and (min-width: 992px){
 .navbar{
