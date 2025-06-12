@@ -137,8 +137,20 @@ function toggleSideMenu(){
         isOpen=false;
     }
 }
-trackSelect.addEventListener('click',toggleSideMenu);
+trackSelect.addEventListener('click', (e) => {
+    e.stopPropagation(); 
+    toggleSideMenu();
+});
 
+sideMenu.addEventListener('click', (e) => {
+    e.stopPropagation(); 
+});
+
+window.addEventListener('click', () => {
+    if (isOpen) {
+        toggleSideMenu();
+    }
+});
 
 //carousel
 
@@ -310,8 +322,8 @@ function applyEMASmoothing() {
 
 const fadeInDuration = fadeInEnd - fadeInStart;
 const fadeOutDuration = fadeOutEnd - fadeOutStart;
-window.addEventListener('scroll', () => {
-    const scrollPosition = window.scrollY;
+function setButtonOpacity(){
+     const scrollPosition = window.scrollY;
 
     if (scrollPosition <= fadeOutDistance) {
         const opacity = 1 - (scrollPosition / fadeOutDistance);
@@ -340,15 +352,18 @@ window.addEventListener('scroll', () => {
     
     prevButton.style.opacity = Math.min(1, Math.max(0, opacity));
     nextButton.style.opacity = Math.min(1, Math.max(0, opacity));
+}
+window.addEventListener('scroll', () => {
+   setButtonOpacity();
 });
-
+setButtonOpacity();
 
 
 async function getMyAlbumRecommendation() {
     const apiKey = 'a8836b7fe2fa7b1f83347b5537067d7d';
     const myUsername = 'Oudiematic3000';
-    const period = '12month';
-    const limit = 150;
+    const period = '12months';
+    const limit = 175;
 
     const apiUrl = `https://ws.audioscrobbler.com/2.0/?method=user.gettopalbums&user=${myUsername}&api_key=${apiKey}&period=${period}&limit=${limit}&format=json`;
 
@@ -373,12 +388,15 @@ async function getMyAlbumRecommendation() {
          const genreElement = document.querySelector('.APIGenres');
         getAlbumSummary(recommendedAlbum.artist.name,recommendedAlbum.name).then(summary=>{
             descriptionElement.innerHTML=summary;
-        })
+        });
+        getGenresFromWikipedia(recommendedAlbum.name, recommendedAlbum.artist.name).then(genres=>{
+             genreElement.innerHTML = genres;
+        });
 
-         getAlbumGenres(recommendedAlbum.artist.name, recommendedAlbum.name)
-             .then(description => {
-                genreElement.innerHTML = description;
-           });
+        //  getAlbumGenres(recommendedAlbum.artist.name, recommendedAlbum.name)
+        //      .then(description => {
+        //         genreElement.innerHTML = description;
+        //    });
 
     } catch (error) {
         console.error("Error fetching data from Last.fm:", error);
@@ -386,6 +404,7 @@ async function getMyAlbumRecommendation() {
 }
 async function getAlbumSummary(artist, album) {
     album=album.replace(/\s*\([^)]*\)\s*$/, '').trim();
+    //albumName=albumName.replace(/\s*\[[^)]*\]\s*$/, '').trim();
     const apiKey = 'a8836b7fe2fa7b1f83347b5537067d7d'; // replace with your Last.fm key
     const url = `https://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=${apiKey}&artist=${encodeURIComponent(artist)}&album=${encodeURIComponent(album)}&format=json`;
 
@@ -397,56 +416,100 @@ async function getAlbumSummary(artist, album) {
             // Remove trailing "Read more" links if present
             return data.album.wiki.summary.replace(/<a.*<\/a>/, '').trim();
         } else {
-            return "No summary found for this album.";
+            return await getWikipediaIntro(album, artist);
         }
     } catch (err) {
         console.error("Error fetching album summary from Last.fm:", err);
-        return "Could not fetch album summary.";
+             return await getWikipediaIntro(album, artist);
     }
 }
+async function getWikipediaIntro(title, artist) {
+    const variations = [
+        title,
+        `${title} (album)`,
+        `${title} (${artist} album)`
+    ];
 
-async function getAlbumGenres(artistName, albumName) {
-    const discogsKey = 'CvzkzBrUnUZdluvTQDGl'; 
-    const discogsSecret = 'MbRYhybzioaGAjXWOwHcIPvOMWVHpAaZ'; 
+    for (const variation of variations) {
+        const wikiTitle = encodeURIComponent(variation);
+        const url = `https://en.wikipedia.org/api/rest_v1/page/summary/${wikiTitle}`;
 
-     albumName=albumName.replace(/\s*\([^)]*\)\s*$/, '').trim();
-    const encodedArtist = encodeURIComponent(artistName);
-    const encodedAlbum = encodeURIComponent(albumName);
+        try {
+            const res = await fetch(url);
+            if (!res.ok) continue;
 
-      const searchUrl = `https://api.discogs.com/database/search?release_title=${encodedAlbum}&artist=${encodedArtist}&type=master&key=${discogsKey}&secret=${discogsSecret}`;
+            const data = await res.json();
+            if (data.extract) {
+                return data.extract;
+            }
+        } catch (e) {
+            console.warn(`Failed to fetch Wikipedia summary for "${variation}"`);
+        }
+    }
 
-    const headers = {
-        'User-Agent': 'ArielOudmayerPortfolio/1.0 +https://oudiematic3000.github.io/DIGA3008A/' 
-    };
+    return "";
+}
+
+async function getGenresFromWikipedia(title, artist = "", fallbackLevel = 0) {
+    title=title.replace(/\s*\([^)]*\)\s*$/, '').trim();
+    const suffixes = [
+        "",                    // original
+        " (album)",            // title (album)
+        ` (${artist} album)`   // title (Artist album)
+    ];
+
+    const queryTitle = `${title}${suffixes[fallbackLevel]}`;
+    const encodedTitle = encodeURIComponent(queryTitle);
 
     try {
-        let response = await fetch(searchUrl, { headers });
-        let data = await response.json();
-        await delay(1000);
-        const masterResult = data.results.find(r => r.master_id);
-        if (!masterResult) {
-            return "No master release found for this album on Discogs.";
-        }
+        const url = `https://en.wikipedia.org/w/api.php?action=parse&page=${encodedTitle}&format=json&origin=*`;
+        const response = await fetch(url);
+        const data = await response.json();
 
-        const masterId = masterResult.master_id;
-        const masterUrl = `https://api.discogs.com/masters/${masterId}`;
+        const html = data.parse?.text["*"];
+        if (!html) throw new Error("No page content.");
 
-        response = await fetch(masterUrl, { headers });
-        data = await response.json();
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, "text/html");
 
-        if (Array.isArray(data.genres) && data.genres.length > 0) {
-            return data.genres; 
+        const infobox = doc.querySelector(".infobox");
+        if (!infobox) throw new Error("No infobox.");
+
+        // Look for the "Genre" row with a link titled "Music genre"
+        const genreRow = [...infobox.querySelectorAll("tr")].find(tr =>
+            tr.querySelector('th a[title="Music genre"]')
+        );
+        if (!genreRow) throw new Error("No genre row.");
+
+        const genreCell = genreRow.querySelector("td.infobox-data.category.hlist");
+        if (!genreCell) throw new Error("No genre cell.");
+
+const genres = [...genreCell.querySelectorAll("a")]
+    .map(link => link.textContent.trim())
+    .map(text => text.replace(/\[\d+\]/g, "")) // Remove any [1], [2] if present
+    .filter(Boolean);
+
+        if (genres.length > 0) {
+            return genres.join(", ");
         } else {
-            return "No genre information found for this album.";
+            throw new Error("Empty genre list.");
         }
 
     } catch (error) {
-        console.error("Error fetching data from Discogs:", error);
-        return "Could not load genre information from Discogs.";
+        console.warn(`Fallback ${fallbackLevel} failed for "${queryTitle}": ${error.message}`);
+
+        // Try next fallback if any remain
+        if (fallbackLevel < suffixes.length - 1) {
+            return getGenresFromWikipedia(title, artist, fallbackLevel + 1);
+        }
+
+        return [""];
     }
 }
-function delay(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
 
+
+const rerollButton=document.querySelector('.reroll')
+rerollButton.addEventListener('click',()=>{
+    getMyAlbumRecommendation();
+})
 getMyAlbumRecommendation();
