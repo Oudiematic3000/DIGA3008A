@@ -34,7 +34,7 @@ introduction.style.opacity=0;
 const muteButton=document.getElementById("muteButton");
 
 var mobile=window.matchMedia("(max-width: 750px)")
-
+var tablet=window.matchMedia("(max-width: 992px)")
 
 loadButton.addEventListener('click',async ()=>{
   const audioReady= await audioSetup();
@@ -55,7 +55,7 @@ handleResize();
 if(!isInternalReferrer){
 window.scrollTo(0, 0);
 document.body.style.overflow='hidden';
-if(mobile.matches)navbar.style.top='-100%';
+if(mobile.matches || tablet.matches)navbar.style.top='-100%';
 }else{
   loadScreen.style.opacity=0;
   loadScreen.style.zIndex=-30;
@@ -115,7 +115,7 @@ async function audioSetup() {
 //Slider Event
 slider.addEventListener('input', (e)=>{
 
-        if(mobile.matches){
+        if(mobile.matches || tablet.matches){
           e.preventDefault();
         }
         const value = parseFloat(slider.value);
@@ -124,7 +124,7 @@ slider.addEventListener('input', (e)=>{
         introduction.style.opacity=1-value;
         canvas.style.bottom=-(value*100)+'%'
         canvas.style.opacity=1-(value);
-        if(mobile.matches){
+        if(mobile.matches|| tablet.matches){
           console.log("grrr");
           introduction.style.bottom=(1-value)*45+'vh';
         }else{
@@ -136,7 +136,7 @@ slider.addEventListener('input', (e)=>{
 
         if(!hasSlid && value===0){
           document.body.style.overflow='auto';
-          if(mobile.matches){
+          if(mobile.matches|| tablet.matches){
           navbar.style.top=0;
        
           }
@@ -207,7 +207,7 @@ function applyEMASmoothing() {
 
             const bufferLength = analyser.frequencyBinCount;
             const gradient = canvasCtx.createLinearGradient(0, 0, 0, canvas.height);
-            if(mobile.matches){
+            if(mobile.matches|| tablet.matches){
               gradient.addColorStop(0, 'rgba(0, 0, 0, 0)');
                gradient.addColorStop(0.3, 'rgba(90, 90, 90, 0.39)');
             gradient.addColorStop(1, 'rgba(70, 70, 70, 0.92)');

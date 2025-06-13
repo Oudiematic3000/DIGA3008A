@@ -378,6 +378,38 @@ cursor: pointer;
     width: 2.5em;
     height: 2.5em;
 }
+.reroll{
+
+    margin-bottom: 30vh;
+
+}
+.APIContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    align-items: center;
+    justify-content: center;
+    margin-top: 4.5em;
+}
+.APIImage{
+    width: 60vw;
+    max-width: 60vw;
+    margin-left: 0;
+}
+.APIText{
+    align-items: center; 
+    justify-content: center;
+}
+.APIDescription{
+    margin-right: 4vw;
+    margin-left: 5vw;
+  font-size: 1rem;
+  line-height: 1.8rem;
+
+}
+.stars{
+    margin-top: 20vh;
+}
 .next{
      position: fixed;
     right: 2em;
@@ -488,6 +520,38 @@ cursor: pointer;
     bottom: 50%;
     width: 3em;
     height: 3em;
+}
+.stars{
+    margin-top: 15vh;
+}
+.reroll{
+
+    margin-bottom: 30vh;
+
+}
+.APIContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    align-items: center;
+    justify-content: center;
+    margin-top: 4.5em;
+}
+.APIImage{
+    width: 60vw;
+    max-width: 60vw;
+    margin-left: 0;
+}
+.APIText{
+    align-items: center; 
+    justify-content: center;
+}
+.APIDescription{
+    margin-right: 4vw;
+    margin-left: 5vw;
+  font-size: 1rem;
+  line-height: 1.8rem;
+
 }
 .next{
      position: fixed;

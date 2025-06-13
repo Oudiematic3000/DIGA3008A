@@ -41,6 +41,7 @@ const trackList = document.getElementById("trackList");
 const trackSelect = document.getElementById("trackSelect");
 const sideMenu = document.querySelector(".sideMenu");
 var mobile=window.matchMedia("(max-width: 750px)")
+var tablet=window.matchMedia("(max-width: 992px)")
 
 
 let track=document.createElement("audio");
@@ -254,7 +255,7 @@ function applyEMASmoothing() {
 
             const bufferLength = analyser.frequencyBinCount;
             const gradient = canvasCtx.createLinearGradient(0, 0, 0, canvas.height);
-            if(mobile.matches){
+            if(mobile.matches || tablet.matches){
       
             gradient.addColorStop(1, 'rgba(70, 70, 70, 0.92)');
             }else{
@@ -329,7 +330,16 @@ function applyEMASmoothing() {
 
   
     const scrollPosition = window.scrollY;
-    const fadeOutDistance = mobile.matches ? 750 : 3000;
+    let fadeOutDistance;
+    if(mobile.matches){
+        fadeOutDistance=750;
+    }else if(tablet.matches){
+        fadeOutDistance=750;
+    }else{
+        fadeOutDistance=3000;
+    }
+
+    
     if (scrollPosition <= fadeOutDistance) {
         canvas.style.opacity = 1 - (scrollPosition / fadeOutDistance);
     } else {
@@ -550,7 +560,7 @@ toTopButton.addEventListener('click',()=>{
 let scrollTimeout;
 let scrollDelay = 1500; 
 const navbar=document.querySelector('.navbar');
-if(mobile.matches){
+if(!mobile.matches && !tablet.matches){
 window.addEventListener('scroll', () => {
 
   clearTimeout(scrollTimeout);

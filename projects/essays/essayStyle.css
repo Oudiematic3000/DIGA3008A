@@ -122,6 +122,52 @@ footer {
     border-radius: 7vh;
     border-style:  none;
 }
+.BlogGrid{
+    display: grid;
+    
+    margin: 7vh 20vw;
+    justify-content: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows  : auto;
+    gap: 2em;
+    list-style-type: none;
+
+    .cardContainer{
+        justify-content: center;
+        display: flex;
+        flex-wrap: wrap;
+        
+    }
+    .card{
+        
+      background-color: #141414;
+      width: 25vw;
+      padding: 1.5vw;
+      display: flex;
+      justify-content: center;
+      transition: box-shadow .3s;
+      border-radius: 8px;
+      overflow: hidden;
+     
+        a{
+          
+            color: white;
+            text-decoration: none;
+            font-family: 'Metropolis';
+        }
+        .cardContent{
+            margin-inline: 1vw;
+        }
+        .blogSample{
+            color: #636364;
+            line-height: 1.5rem;
+        }
+       
+    }
+    .card:hover{
+        box-shadow: 0 0 14px 2px #dbdbdb;
+    }
+}
 @media only screen and (min-width: 992px){
     .bodyText{
     font-family: 'Metropolis';
@@ -129,6 +175,68 @@ footer {
     font-size: 1.6vw;
     line-height: 1.9vw;
 }
+
+ .BlogGrid{
+        display: grid;
+        
+        margin: 7vh 7vw;
+        justify-content: center;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows  : auto;
+        gap: 4vw;
+        list-style-type: none;
+    
+        .cardContainer{
+            justify-content: center;
+            display: flex;
+            flex-wrap: wrap;
+            
+        }
+        .card{
+            
+          background-color: #141414;
+          width: 70vw;
+          padding: 1.5vw;
+          display: flex;
+          justify-content: center;
+          transition: box-shadow .3s;
+          border-radius: 8px;
+          overflow: hidden;
+         
+            a{
+              
+                color: white;
+                text-decoration: none;
+                font-family: 'Metropolis';
+            }
+            .cardContent{
+                margin-inline: 1vw;
+            }
+            .blogSample{
+                color: #636364;
+                line-height: 1.5rem;
+            }
+           
+        }
+         .card{
+        width: 25vw;
+        gap: 4vw;
+
+    }
+      
+        .card:hover{
+            box-shadow: 0 0 14px 2px #dbdbdb;
+        }
+        
+    .cardListMode{
+        width: 70vw;
+        gap: 1vh;
+    }
+    
+    .BlogGrid{
+         grid-template-columns: 1fr 1fr 1fr;
+    }
+    }
 img{
     max-height: 60vh;
 }
@@ -269,6 +377,62 @@ h1{
         font-weight: normal;
         font-size: 8vw;
         margin:auto;
+    }
+     .BlogGrid{
+        display: grid;
+        
+        margin: 7vh 7vw;
+        justify-content: center;
+        grid-template-columns: 1fr;
+        grid-template-rows  : auto;
+        gap: 4vw;
+        list-style-type: none;
+    
+        .cardContainer{
+            justify-content: center;
+            display: flex;
+            flex-wrap: wrap;
+            
+        }
+        .card{
+            
+          background-color: #141414;
+          width: 70vw;
+          padding: 1.5vw;
+          display: flex;
+          justify-content: center;
+          transition: box-shadow .3s;
+          border-radius: 8px;
+          overflow: hidden;
+         
+            a{
+              
+                color: white;
+                text-decoration: none;
+                font-family: 'Metropolis';
+            }
+            .cardContent{
+                margin-inline: 1vw;
+            }
+            .blogSample{
+                color: #636364;
+                line-height: 1.5rem;
+            }
+           
+        }
+      
+        .card:hover{
+            box-shadow: 0 0 14px 2px #dbdbdb;
+        }
+        
+    .cardListMode{
+        width: 70vw;
+        gap: 1vh;
+    }
+    
+    .BlogGrid{
+         grid-template-columns: 1fr 1fr 1fr;
+    }
     }
     .bodyText{
         font-family: 'Metropolis';
